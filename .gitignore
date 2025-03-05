@@ -1,0 +1,37 @@
+# Dossiers spécifiques à Unity
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Mm]emoryCaptures/
+
+# Paramètres locaux
+[Dd]ebug*/
+*[Aa]ssets.bin
+*.swp
+*.lock
+*.tmp
+*.temp
+
+# Fichiers système
+.DS_Store
+Thumbs.db
+
+# Dossiers de crash Unity
+[Uu]ser[Ss]ettings/
+
+# Paramètres des IDE (Visual Studio, Rider, etc.)
+.vscode/
+.idea/
+*.sln
+*.csproj
+*.pidb
+*.suo
+*.userprefs
+*.unityproj
+
+# Autres fichiers Unity
+*.log
+*.stacktrace
