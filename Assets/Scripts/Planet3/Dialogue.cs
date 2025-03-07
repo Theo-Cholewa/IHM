@@ -1,10 +1,29 @@
+using System;
 using UnityEngine;
 
 public class Dialogue : Interraction
 {
+    public string[] dialogues;
+    public int dialogueIndex = 0; 
+
+    public bool interractionStarted = false;
     public override void Interract()
     {
-        // Affiche le nom de l'objet dans la console
-        Debug.Log($"Nom de l'objet : {gameObject.name}");
+        if (!interractionStarted)
+        {
+            Debug.Log("Dialogue");
+            interractionStarted = true;
+            FindObjectOfType<DialogueManager>().DisplayDialogue(this);
+        }
+    }
+
+    public String GetDialogue()
+    {
+        return dialogues[dialogueIndex];
+    }
+
+    public bool IsDialogueFinished()
+    {
+        return dialogueIndex == dialogues.Length;
     }
 }

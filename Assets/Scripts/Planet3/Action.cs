@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Action : Interraction
 {
+    
     public override void Interract()
     {
         // Déplace l'objet de 1 en x
