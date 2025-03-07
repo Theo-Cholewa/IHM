@@ -26,7 +26,14 @@ public class DetectionManager : MonoBehaviour
             // Vérification si la distance est inférieure au rayon de détection
             if (distance < detected.detectionRadius)
             {
-                Debug.Log($"Objet détecté : {detected.targetObject.name}");
+                // Récupérer le script Interraction sur l'objet détecté
+                Interraction interractionScript = detected.targetObject.GetComponent<Interraction>();
+
+                if (interractionScript != null)
+                {
+                    // Activer la méthode Interraction
+                    interractionScript.Interract();
+                }
             }
         }
     }
