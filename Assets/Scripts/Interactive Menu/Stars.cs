@@ -1,44 +1,47 @@
-using System;
-using System.Linq;
-using UnityEngine;
-using Random = UnityEngine.Random;
+﻿using UnityEngine;
 
-public class Stars : MonoBehaviour
+public class StarGenerator : MonoBehaviour
 {
+    public GameObject starPrefab; // Assigne un prefab avec un MeshRenderer
+    public int starCount = 50000; // Nombre d'étoiles
     public Datas gameData;
-    public int starCount = 5000;
-    private Mesh mesh;
-    private Vector3[] stars;
+    public Vector2 rangeY;
 
     void Start()
     {
-        MeshFilter meshFilter = GetComponent<MeshFilter>();
-        MeshRenderer meshRenderer = GetComponent<MeshRenderer>();
+        GenerateStars();
+    }
 
-        if (meshRenderer.material == null)
-        {
-            meshRenderer.material = new Material(Shader.Find("Particles/Unlit"));
-        }
-
-        mesh = new Mesh();
-        stars = new Vector3[starCount*5];
+    void GenerateStars()
+    {
+        Vector3[] positions = new Vector3[starCount*5];
 
         for (int i = 0; i < starCount; i++)
         {
+
             Vector3 pos = new Vector3(
-                Random.Range(-gameData.AreaSize.x, gameData.AreaSize.x),
-                Random.Range(-100f, 0),
-                Random.Range(-gameData.AreaSize.y, gameData.AreaSize.y)
+                Random.Range(-gameData.areaSize.x, gameData.areaSize.x),
+                Random.Range(rangeY.x, rangeY.y),
+                Random.Range(-gameData.areaSize.y, gameData.areaSize.y)
             );
-            stars[i] = pos;
-            stars[i + starCount] = pos + new Vector3(gameData.AreaSize.x*2, 0, 0);
-            stars[i + starCount*2] = pos + new Vector3(0, 0, gameData.AreaSize.y*2);
-            stars[i + starCount*3] = pos + new Vector3(-gameData.AreaSize.x*2, 0, 0);
-            stars[i + starCount*4] = pos + new Vector3(0, 0,-gameData.AreaSize.y*2);
+
+            positions[0] = pos;
+            positions[1] = pos + new Vector3(gameData.areaSize.x*2, 0, 0);
+            positions[2] = pos + new Vector3(0, 0, gameData.areaSize.y*2);
+            positions[3] = pos + new Vector3(-gameData.areaSize.x*2, 0, 0);
+            positions[4] = pos + new Vector3(0, 0,-gameData.areaSize.y*2);
+
+            Vector3 size = Vector3.one * Random.Range(0.1f, 2f) * (Mathf.Abs(gameData.marginFromPlayer.y-pos.y)/Mathf.Abs(rangeY.x-gameData.marginFromPlayer.y));
+            
+            for (int k = 0; k < 5; k++)
+            {
+                GameObject star = Instantiate(starPrefab, positions[k], Quaternion.identity);
+                star.transform.localScale = Vector3.one;
+                //star.transform.localScale = size; 
+                star.isStatic = true; 
+            }
         }
 
-        mesh.vertices = stars;
-        mesh.SetIndices(System.Linq.Enumerable.Range(0, starCount*5).ToArray(), MeshTopology.Points, 0);
-        meshFilter.mesh = mesh;
+        StaticBatchingUtility.Combine(gameObject);
     }
 }

@@ -7,5 +7,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "GameData", menuName = "ScriptableObjects/GameData", order = 1)]
 public class Datas : ScriptableObject
 {
-    public Vector2 AreaSize;
+    public Vector2 areaSize;
+    public Vector3 marginFromPlayer;
+    public Vector2[] planetsPositions;
 }

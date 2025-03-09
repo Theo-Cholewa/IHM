@@ -22,13 +22,13 @@ public class SpashipControl : MonoBehaviour
 
     void Update()
     {
-        if (Mathf.Abs(rg.position.x) > gameData.AreaSize.x && rg.velocity.x*rg.position.x >= 0)
+        if (Mathf.Abs(rg.position.x) > gameData.areaSize.x && rg.velocity.x*rg.position.x >= 0)
         {
-            rg.position = new Vector3(-Math.Sign(rg.position.x)*gameData.AreaSize.x, rg.position.y, rg.position.z);
+            rg.position = new Vector3(-Math.Sign(rg.position.x)*gameData.areaSize.x, rg.position.y, rg.position.z);
         }
-        if (Mathf.Abs(rg.position.z) > gameData.AreaSize.y && rg.velocity.z*rg.position.y >= 0)
+        if (Mathf.Abs(rg.position.z) > gameData.areaSize.y && rg.velocity.z*rg.position.y >= 0)
         {
-            rg.position = new Vector3(rg.position.x, rg.position.y, -Math.Sign(rg.position.z)*gameData.AreaSize.y);
+            rg.position = new Vector3(rg.position.x, rg.position.y, -Math.Sign(rg.position.z)*gameData.areaSize.y);
         }
         
         inputY = Input.GetAxis("Vertical");
