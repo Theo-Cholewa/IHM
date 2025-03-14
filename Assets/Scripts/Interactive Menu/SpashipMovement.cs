@@ -15,9 +15,20 @@ public class SpashipControl : MonoBehaviour
 
     private float inputX;
 
+    private List<TrailRenderer> trail;
+    private Transform spaceship;
+
     void Start()
     {
         rg = GetComponent<Rigidbody>();
+
+        spaceship = GameObject.FindWithTag("Player").transform;
+        trail = new List<TrailRenderer>();
+        foreach (Transform child in  spaceship)
+        {
+            trail.Add(child.GetComponent<TrailRenderer>());
+            Debug.Log(child);
+        }
     }
 
     void Update()
@@ -46,6 +57,9 @@ public class SpashipControl : MonoBehaviour
         );
 
         Vector3 velocity = rg.velocity;
+        float angle = Vector3.SignedAngle(Vector3.right, spaceship.forward, Vector3.up);
+        //TODO refactor trail emitting
+        trail.ForEach((emitter) => emitter.emitting = (angle*velocity.x >= 0) && ((angle+180)*velocity.z >=0));
         rg.AddForce(-friction * velocity.x*(1-Mathf.Abs(inputY*0.5f)), 0, -friction * velocity.z*(1-Mathf.Abs(inputY*0.5f)), ForceMode.Acceleration);
     }
 }
