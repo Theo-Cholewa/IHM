@@ -1,20 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
-public class Planet : MonoBehaviour
+public class Planet : Interraction2
 {
 
     public int planetIndex;
     private Rigidbody rg;
-    public Datas gameDatas;
+    [FormerlySerializedAs("gameDatas")] public DatasInteractiveMenu gameDatasInteractiveMenu;
     
     void Start()
     {
         rg = GetComponent<Rigidbody>();
         rg.constraints = RigidbodyConstraints.None;
-        Debug.Log(gameDatas.planetsPositions[planetIndex]);
-        transform.position = new Vector3(gameDatas.planetsPositions[planetIndex].x, 0, gameDatas.planetsPositions[planetIndex].y);
+        Debug.Log(gameDatasInteractiveMenu.planetsPositions[planetIndex]);
+        transform.position = new Vector3(gameDatasInteractiveMenu.planetsPositions[planetIndex].x, 0, gameDatasInteractiveMenu.planetsPositions[planetIndex].y);
         rg.constraints = RigidbodyConstraints.FreezeAll;
     }
 
@@ -23,4 +25,11 @@ public class Planet : MonoBehaviour
     {
         
     }
+
+    public override void Interract()
+    {
+        SceneManager.LoadScene("Scenes/Planete3");
+        return;
+    }
+
 }

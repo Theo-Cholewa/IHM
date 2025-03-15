@@ -2,10 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class SpashipControl : MonoBehaviour
 {
-    public Datas gameData;
+    [FormerlySerializedAs("gameData")] public DatasInteractiveMenu gameDataInteractiveMenu;
     public Rigidbody rg;
     public float forwardSpeed;
     public float steerSpeed;
@@ -33,13 +34,13 @@ public class SpashipControl : MonoBehaviour
 
     void Update()
     {
-        if (Mathf.Abs(rg.position.x) > gameData.areaSize.x && rg.velocity.x*rg.position.x >= 0)
+        if (Mathf.Abs(rg.position.x) > gameDataInteractiveMenu.areaSize.x && rg.velocity.x*rg.position.x >= 0)
         {
-            rg.position = new Vector3(-Math.Sign(rg.position.x)*gameData.areaSize.x, rg.position.y, rg.position.z);
+            rg.position = new Vector3(-Math.Sign(rg.position.x)*gameDataInteractiveMenu.areaSize.x, rg.position.y, rg.position.z);
         }
-        if (Mathf.Abs(rg.position.z) > gameData.areaSize.y && rg.velocity.z*rg.position.y >= 0)
+        if (Mathf.Abs(rg.position.z) > gameDataInteractiveMenu.areaSize.y && rg.velocity.z*rg.position.y >= 0)
         {
-            rg.position = new Vector3(rg.position.x, rg.position.y, -Math.Sign(rg.position.z)*gameData.areaSize.y);
+            rg.position = new Vector3(rg.position.x, rg.position.y, -Math.Sign(rg.position.z)*gameDataInteractiveMenu.areaSize.y);
         }
         
         inputY = Input.GetAxis("Vertical");

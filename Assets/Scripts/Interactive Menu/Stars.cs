@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
+using UnityEngine.Serialization;
 
 public class StarGenerator : MonoBehaviour
 {
     public GameObject starPrefab; // Assigne un prefab avec un MeshRenderer
     public int starCount = 50000; // Nombre d'étoiles
-    public Datas gameData;
+    [FormerlySerializedAs("gameData")] public DatasInteractiveMenu gameDataInteractiveMenu;
     public Vector2 rangeY;
 
     void Start()
@@ -20,18 +21,18 @@ public class StarGenerator : MonoBehaviour
         {
 
             Vector3 pos = new Vector3(
-                Random.Range(-gameData.areaSize.x, gameData.areaSize.x),
+                Random.Range(-gameDataInteractiveMenu.areaSize.x, gameDataInteractiveMenu.areaSize.x),
                 Random.Range(rangeY.x, rangeY.y),
-                Random.Range(-gameData.areaSize.y, gameData.areaSize.y)
+                Random.Range(-gameDataInteractiveMenu.areaSize.y, gameDataInteractiveMenu.areaSize.y)
             );
 
             positions[0] = pos;
-            positions[1] = pos + new Vector3(gameData.areaSize.x*2, 0, 0);
-            positions[2] = pos + new Vector3(0, 0, gameData.areaSize.y*2);
-            positions[3] = pos + new Vector3(-gameData.areaSize.x*2, 0, 0);
-            positions[4] = pos + new Vector3(0, 0,-gameData.areaSize.y*2);
+            positions[1] = pos + new Vector3(gameDataInteractiveMenu.areaSize.x*2, 0, 0);
+            positions[2] = pos + new Vector3(0, 0, gameDataInteractiveMenu.areaSize.y*2);
+            positions[3] = pos + new Vector3(-gameDataInteractiveMenu.areaSize.x*2, 0, 0);
+            positions[4] = pos + new Vector3(0, 0,-gameDataInteractiveMenu.areaSize.y*2);
 
-            Vector3 size = Vector3.one * Random.Range(0.1f, 2f) * (Mathf.Abs(gameData.marginFromPlayer.y-pos.y)/Mathf.Abs(rangeY.x-gameData.marginFromPlayer.y));
+            Vector3 size = Vector3.one * Random.Range(0.1f, 2f) * (Mathf.Abs(gameDataInteractiveMenu.marginFromPlayer.y-pos.y)/Mathf.Abs(rangeY.x-gameDataInteractiveMenu.marginFromPlayer.y));
             
             for (int k = 0; k < 5; k++)
             {

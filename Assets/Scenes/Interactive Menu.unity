@@ -219,7 +219,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 222997613}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -231,7 +231,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 60}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!4 &243166308 stripped
@@ -509,6 +509,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Planet 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1360496221257314915, guid: 1f23b633899ed264ba3bae5021ab93d8, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 4823829559861624832, guid: 1f23b633899ed264ba3bae5021ab93d8, type: 3}
       propertyPath: m_Constraints
       value: 126
@@ -521,6 +525,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 751d2b357278e9c41a1ba0a1098045a3, type: 2}
+    - target: {fileID: 7300338300193299298, guid: 1f23b633899ed264ba3bae5021ab93d8, type: 3}
+      propertyPath: m_TagString
+      value: Planet
+      objectReference: {fileID: 0}
     - target: {fileID: 7313587098539461965, guid: 1f23b633899ed264ba3bae5021ab93d8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1112,7 +1120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1904339898}
-  gameData: {fileID: 11400000, guid: 941cd02a27cc07c4482ce2b826d62168, type: 2}
+  gameDataInteractiveMenu: {fileID: 11400000, guid: 941cd02a27cc07c4482ce2b826d62168, type: 2}
 --- !u!114 &963194230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1276,7 +1284,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   starPrefab: {fileID: 796005431709966097, guid: b368f9f12b2bc804782ed894cf95c916, type: 3}
   starCount: 1000
-  gameData: {fileID: 11400000, guid: 941cd02a27cc07c4482ce2b826d62168, type: 2}
+  gameDataInteractiveMenu: {fileID: 11400000, guid: 941cd02a27cc07c4482ce2b826d62168, type: 2}
   rangeY: {x: -100, y: 10}
 --- !u!4 &1099703463 stripped
 Transform:
@@ -1390,6 +1398,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Planet 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1360496221257314915, guid: 1f23b633899ed264ba3bae5021ab93d8, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 4823829559861624832, guid: 1f23b633899ed264ba3bae5021ab93d8, type: 3}
       propertyPath: m_Constraints
       value: 126
@@ -1406,6 +1418,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: b4a10d33105125f44a44bef06c3a4377, type: 2}
+    - target: {fileID: 7300338300193299298, guid: 1f23b633899ed264ba3bae5021ab93d8, type: 3}
+      propertyPath: m_TagString
+      value: Planet
+      objectReference: {fileID: 0}
     - target: {fileID: 7313587098539461965, guid: 1f23b633899ed264ba3bae5021ab93d8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1488,12 +1504,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db4261e55f7c06a4986e2cba23f575a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  planets:
-  - {fileID: 2024932871}
-  - {fileID: 1222716734}
-  - {fileID: 1913411778}
-  - {fileID: 1697171865}
-  indicators: []
 --- !u!4 &1266482026
 Transform:
   m_ObjectHideFlags: 0
@@ -1504,6 +1514,51 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1419642365
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1419642367}
+  - component: {fileID: 1419642366}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1419642366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1419642365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4f91f85194f4da79ce66fcf95bcb8d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameDatasInteractiveMenu: {fileID: 11400000, guid: 941cd02a27cc07c4482ce2b826d62168, type: 2}
+--- !u!4 &1419642367
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1419642365}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 9.736253, y: -13.882415, z: -12.593431}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1625,6 +1680,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Planet 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1360496221257314915, guid: 1f23b633899ed264ba3bae5021ab93d8, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 4823829559861624832, guid: 1f23b633899ed264ba3bae5021ab93d8, type: 3}
       propertyPath: m_Constraints
       value: 126
@@ -1637,6 +1696,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: a9ad817c024458643a700b667095e40c, type: 2}
+    - target: {fileID: 7300338300193299298, guid: 1f23b633899ed264ba3bae5021ab93d8, type: 3}
+      propertyPath: m_TagString
+      value: Planet
+      objectReference: {fileID: 0}
     - target: {fileID: 7313587098539461965, guid: 1f23b633899ed264ba3bae5021ab93d8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1721,6 +1784,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Planet 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1360496221257314915, guid: 1f23b633899ed264ba3bae5021ab93d8, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 4823829559861624832, guid: 1f23b633899ed264ba3bae5021ab93d8, type: 3}
       propertyPath: m_Constraints
       value: 126
@@ -1729,6 +1796,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: bac2f22a219084b4b8a2a793aaef1e3b, type: 2}
+    - target: {fileID: 7300338300193299298, guid: 1f23b633899ed264ba3bae5021ab93d8, type: 3}
+      propertyPath: m_TagString
+      value: Planet
+      objectReference: {fileID: 0}
     - target: {fileID: 7313587098539461965, guid: 1f23b633899ed264ba3bae5021ab93d8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1768,6 +1839,10 @@ PrefabInstance:
     - target: {fileID: 7313587098539461965, guid: 1f23b633899ed264ba3bae5021ab93d8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7811315775678277824, guid: 1f23b633899ed264ba3bae5021ab93d8, type: 3}
+      propertyPath: detectionRadius
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1844,7 +1919,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 130558dd3cae3a3488cc618ee7f4edee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameData: {fileID: 11400000, guid: 941cd02a27cc07c4482ce2b826d62168, type: 2}
+  gameDataInteractiveMenu: {fileID: 11400000, guid: 941cd02a27cc07c4482ce2b826d62168, type: 2}
   rg: {fileID: 0}
   forwardSpeed: 5
   steerSpeed: 15
@@ -1874,6 +1949,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1266482026}
+  - {fileID: 1419642367}
   - {fileID: 963194228}
   - {fileID: 705507995}
   - {fileID: 1082185664}

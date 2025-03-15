@@ -1,11 +1,12 @@
 using System;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class Stars : MonoBehaviour
 {
-    public Datas gameData;
+    [FormerlySerializedAs("gameData")] public DatasInteractiveMenu gameDataInteractiveMenu;
     public int starCount = 5000;
     private Mesh mesh;
     private Vector3[] stars;
@@ -26,15 +27,15 @@ public class Stars : MonoBehaviour
         for (int i = 0; i < starCount; i++)
         {
             Vector3 pos = new Vector3(
-                Random.Range(-gameData.areaSize.x, gameData.areaSize.x),
+                Random.Range(-gameDataInteractiveMenu.areaSize.x, gameDataInteractiveMenu.areaSize.x),
                 Random.Range(-100f, 0),
-                Random.Range(-gameData.areaSize.y, gameData.areaSize.y)
+                Random.Range(-gameDataInteractiveMenu.areaSize.y, gameDataInteractiveMenu.areaSize.y)
             );
             stars[i] = pos;
-            stars[i + starCount] = pos + new Vector3(gameData.areaSize.x*2, 0, 0);
-            stars[i + starCount*2] = pos + new Vector3(0, 0, gameData.areaSize.y*2);
-            stars[i + starCount*3] = pos + new Vector3(-gameData.areaSize.x*2, 0, 0);
-            stars[i + starCount*4] = pos + new Vector3(0, 0,-gameData.areaSize.y*2);
+            stars[i + starCount] = pos + new Vector3(gameDataInteractiveMenu.areaSize.x*2, 0, 0);
+            stars[i + starCount*2] = pos + new Vector3(0, 0, gameDataInteractiveMenu.areaSize.y*2);
+            stars[i + starCount*3] = pos + new Vector3(-gameDataInteractiveMenu.areaSize.x*2, 0, 0);
+            stars[i + starCount*4] = pos + new Vector3(0, 0,-gameDataInteractiveMenu.areaSize.y*2);
         }
 
         mesh.vertices = stars;
