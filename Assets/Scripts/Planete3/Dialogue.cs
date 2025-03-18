@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Dialogue : Interraction
 {
+    public TextAsset inkFile;
     public string[] dialogues;
     public int dialogueIndex = 0; 
 
@@ -11,9 +12,8 @@ public class Dialogue : Interraction
     {
         if (!interractionStarted)
         {
-            Debug.Log("Dialogue");
             interractionStarted = true;
-            FindObjectOfType<DialogueManager>().DisplayDialogue(this);
+            FindObjectOfType<DialogueManager>().DisplayDialogue(inkFile);
         }
     }
 
