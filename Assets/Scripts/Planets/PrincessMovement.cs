@@ -19,7 +19,7 @@ public class princessMovement : MonoBehaviour
         transform.Rotate(0, rotation, 0);
 
         // Translation (avant/arrière)
-        Vector3 moveDirection = transform.forward * input.y * speed * Time.deltaTime;
+        Vector3 moveDirection = transform.forward * (input.y * speed * Time.deltaTime);
         transform.Translate(moveDirection, Space.World);
     }
 }
