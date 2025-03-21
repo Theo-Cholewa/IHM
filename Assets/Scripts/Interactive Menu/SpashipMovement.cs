@@ -34,12 +34,14 @@ public class SpashipControl : MonoBehaviour
 
     void Update()
     {
-        if (Mathf.Abs(rg.position.x) > gameDataInteractiveMenu.areaSize.x && rg.velocity.x*rg.position.x >= 0)
+        if (Mathf.Abs(rg.position.x) > gameDataInteractiveMenu.areaSize.x)
         {
+            trail.ForEach((emitter) => emitter.emitting = false);
             rg.position = new Vector3(-Math.Sign(rg.position.x)*gameDataInteractiveMenu.areaSize.x, rg.position.y, rg.position.z);
         }
-        if (Mathf.Abs(rg.position.z) > gameDataInteractiveMenu.areaSize.y && rg.velocity.z*rg.position.y >= 0)
+        if (Mathf.Abs(rg.position.z) > gameDataInteractiveMenu.areaSize.y)
         {
+            trail.ForEach((emitter) => emitter.emitting = false);
             rg.position = new Vector3(rg.position.x, rg.position.y, -Math.Sign(rg.position.z)*gameDataInteractiveMenu.areaSize.y);
         }
         
@@ -57,10 +59,14 @@ public class SpashipControl : MonoBehaviour
             ForceMode.Acceleration
         );
 
+
+        
         Vector3 velocity = rg.velocity;
-        float angle = Vector3.SignedAngle(Vector3.right, spaceship.forward, Vector3.up);
-        //TODO refactor trail emitting
-        trail.ForEach((emitter) => emitter.emitting = (angle*velocity.x >= 0) && ((angle+180)*velocity.z >=0));
+        
+        float forwardVelocity = Vector3.Dot(spaceship.forward, velocity);
+        trail.ForEach((emitter) => emitter.emitting = forwardVelocity > 0);
+        
+        
         rg.AddForce(-friction * velocity.x*(1-Mathf.Abs(inputY*0.5f)), 0, -friction * velocity.z*(1-Mathf.Abs(inputY*0.5f)), ForceMode.Acceleration);
     }
 }
