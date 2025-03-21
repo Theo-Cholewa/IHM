@@ -1120,7 +1120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1904339898}
-  gameDataInteractiveMenu: {fileID: 11400000, guid: 941cd02a27cc07c4482ce2b826d62168, type: 2}
+  gameData: {fileID: 11400000, guid: 941cd02a27cc07c4482ce2b826d62168, type: 2}
 --- !u!114 &963194230
 MonoBehaviour:
   m_ObjectHideFlags: 0
