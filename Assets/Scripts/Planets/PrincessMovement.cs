@@ -9,17 +9,26 @@ public class princessMovement : MonoBehaviour
     public float steerSpeed;
     private Vector2 input;
 
+    private bool canWalk = true;
+
     void Update()
     {
-        // Capturer les entrées du joueur (touches fléchées)
-        input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        if (canWalk)
+        {
+            input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 
-        // Rotation (gauche/droite)
-        float rotation = input.x * steerSpeed * Time.deltaTime;
-        transform.Rotate(0, rotation, 0);
+            // Rotation (gauche/droite)
+            float rotation = input.x * steerSpeed * Time.deltaTime;
+            transform.Rotate(0, rotation, 0);
 
-        // Translation (avant/arrière)
-        Vector3 moveDirection = transform.forward * (input.y * speed * Time.deltaTime);
-        transform.Translate(moveDirection, Space.World);
+            // Translation (avant/arrière)
+            Vector3 moveDirection = transform.forward * input.y * speed * Time.deltaTime;
+            transform.Translate(moveDirection, Space.World);
+        }        
+    }
+
+    public void SetCanWalk(bool canWalk)
+    {
+        this.canWalk = canWalk;
     }
 }
