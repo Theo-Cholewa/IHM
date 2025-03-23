@@ -8,7 +8,8 @@ public class princessController : MonoBehaviour
     public UnityEvent<Vector2> unityEvent;
     private float inputX;
     private float inputY;
-    void Update() // Get keyboard inputs
+
+    void Update() 
     {
         inputY = Input.GetAxis("Vertical");
         inputX = Input.GetAxis("Horizontal");

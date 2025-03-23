@@ -2,94 +2,148 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-using System.IO; 
-using Newtonsoft.Json;
+using Ink.Runtime;
 
 public class DialogueManager : MonoBehaviour
 {
     public TextMeshProUGUI text; // TextMeshPro pour afficher le dialogue
-    public Button nextButton; // Bouton "Suivant" ou "Fermer"
-    public List<Dialogue> dialogues; // Liste des objets de type Dialogue
-    private Dialogue currentDialogue; // Référence au Dialogue actif
+    public GameObject choix1; // Bouton choix 1
+    public GameObject choix2; // Bouton choix 2
+    public GameObject choix3; // Bouton choix 3
+
+    private TextAsset currentInkFile; // Fichier Ink actif
+    private Story story; // Instance de l'histoire Ink
+    private GameObject princess; // Référence à l'objet Princess
 
     void Start()
     {
         text.gameObject.SetActive(false);
-        nextButton.gameObject.SetActive(false);
-        
-        string filePath = Path.Combine(Application.dataPath, "Datas/Planete3/dialogs.json");
-        LoadAndAssignDialogues(filePath);
-    }
 
-    public void LoadAndAssignDialogues(string filePath)
-    {
-        if (File.Exists(filePath))
-        {
-            // Lire le contenu du fichier JSON
-            string jsonData = File.ReadAllText(filePath);
+        if(choix1 != null){
+            choix1.SetActive(false);
+            choix1.transform.GetComponent<Button>().onClick.AddListener(() => OnChoiceSelected(0));
 
-            // Désérialiser le JSON en un dictionnaire
-            Dictionary<string, List<string>> dialogueData = JsonConvert.DeserializeObject<Dictionary<string, List<string>>>(jsonData);
-
-            foreach (var entry in dialogueData)
-            {
-                Debug.Log($"Clé : {entry.Key}, Valeur : {entry.Value[0]}");
-                // Trouver l'objet dans la scène portant le nom correspondant
-                GameObject obj = GameObject.Find(entry.Key);
-                if (obj != null && obj.TryGetComponent<Dialogue>(out Dialogue dialogueComponent))
-                {
-                    // Affecter les données au composant Dialogue
-                    dialogueComponent.dialogues = entry.Value.ToArray();
-                }
-            }
         }
-        else
+        if(choix2 != null){
+            choix2.SetActive(false);
+            choix2.transform.GetComponent<Button>().onClick.AddListener(() => OnChoiceSelected(1));
+
+        }
+        if(choix3 != null){
+            choix3.SetActive(false);
+            choix3.transform.GetComponent<Button>().onClick.AddListener(() => OnChoiceSelected(2));
+
+        }
+       
+        princess = GameObject.Find("Princess");
+        if (princess == null)
         {
-            Debug.LogError($"Fichier JSON introuvable : {filePath}");
+            Debug.LogError("L'objet 'Princess' n'a pas été trouvé dans la scène !");
         }
     }
 
-    public void DisplayDialogue(Dialogue dialogue)
+    public void DisplayDialogue(TextAsset inkFile)
     {
+        // Charger l'histoire Ink
+        story = new Story(inkFile.text);
+
+        // Appeler SetCanWalk(false) au début du dialogue
+        if (princess != null)
+        {
+            princess.SendMessage("SetCanWalk", false);
+        }
+
+        // Activer l'élément de texte
         text.gameObject.SetActive(true);
-        nextButton.gameObject.SetActive(true);
 
-        currentDialogue = dialogue;
-
-        UpdateDialogue();
+        // Commencer le dialogue
+        ProcessDialogue();
     }
 
-    public void UpdateDialogue()
+    private void ProcessDialogue()
     {
-        if (currentDialogue != null)
+        // Afficher le dialogue tant qu'il peut continuer
+        if (story.canContinue)
         {
-            text.text = currentDialogue.GetDialogue();
-            currentDialogue.dialogueIndex++;
-            // Vérifie si le dialogue est terminé
-            if (currentDialogue.IsDialogueFinished())
+            string currentText = story.Continue();
+            text.text = currentText; // Affiche dans TextMeshProUGUI
+        }
+
+        // Si des choix sont disponibles, afficher les boutons
+        if (story.currentChoices.Count > 0)
+        {
+            DisplayChoices();
+        }
+        else if (!story.canContinue)
+        {
+            text.text = "Fin du dialogue."; // Affiche la fin dans TextMeshProUGUI
+            HideChoices(); // Cache les boutons si le dialogue est terminé
+
+            // Appeler SetCanWalk(true) à la fin du dialogue
+            if (princess != null)
             {
-                nextButton.GetComponentInChildren<TextMeshProUGUI>().text = "Fermer";
-                nextButton.onClick.RemoveAllListeners();
-                nextButton.onClick.AddListener(CloseDialogue);
-            }
-            else
-            {
-                nextButton.GetComponentInChildren<TextMeshProUGUI>().text = "Suivant";
-                nextButton.onClick.RemoveAllListeners();
-                nextButton.onClick.AddListener(() => { OnNextDialogue(); });
+                princess.SendMessage("SetCanWalk", true);
             }
         }
     }
 
-    private void OnNextDialogue()
+    private void DisplayChoices()
     {
-        UpdateDialogue();
+        // Cacher tous les boutons avant d'afficher les nouveaux choix
+        HideChoices();
+
+        // Ajuster les positions et afficher les boutons en fonction du nombre de choix
+        int choiceCount = story.currentChoices.Count;
+
+        if (choiceCount == 1)
+        {
+            choix1.gameObject.SetActive(true);
+            choix1.GetComponentInChildren<TextMeshProUGUI>().text = story.currentChoices[0].text;
+            choix1.transform.localPosition = new Vector3(0, choix1.transform.localPosition.y, 0);
+        }
+        else if (choiceCount == 2)
+        {
+            choix1.gameObject.SetActive(true);
+            choix2.gameObject.SetActive(true);
+
+            choix1.GetComponentInChildren<TextMeshProUGUI>().text = story.currentChoices[0].text;
+            choix2.GetComponentInChildren<TextMeshProUGUI>().text = story.currentChoices[1].text;
+
+            choix1.transform.localPosition = new Vector3(90, choix1.transform.localPosition.y, 0);
+            choix2.transform.localPosition = new Vector3(-90, choix2.transform.localPosition.y, 0);
+        }
+        else if (choiceCount == 3)
+        {
+            choix1.gameObject.SetActive(true);
+            choix2.gameObject.SetActive(true);
+            choix3.gameObject.SetActive(true);
+
+            choix1.GetComponentInChildren<TextMeshProUGUI>().text = story.currentChoices[0].text;
+            choix2.GetComponentInChildren<TextMeshProUGUI>().text = story.currentChoices[1].text;
+            choix3.GetComponentInChildren<TextMeshProUGUI>().text = story.currentChoices[2].text;
+
+            choix1.transform.localPosition = new Vector3(180, choix1.transform.localPosition.y, 0);
+            choix2.transform.localPosition = new Vector3(0, choix2.transform.localPosition.y, 0);
+            choix3.transform.localPosition = new Vector3(-180, choix3.transform.localPosition.y, 0);
+        }
     }
 
-    private void CloseDialogue()
+    private void HideChoices()
     {
-        text.gameObject.SetActive(false);
-        nextButton.gameObject.SetActive(false);
-        currentDialogue = null; // Réinitialise le dialogue actif
+        // Cacher tous les boutons
+        choix1.gameObject.SetActive(false);
+        choix2.gameObject.SetActive(false);
+        choix3.gameObject.SetActive(false);
+    }
+
+    private void OnChoiceSelected(int choiceIndex)
+    {
+        // Sélectionner le choix et continuer le dialogue
+        if (choiceIndex < story.currentChoices.Count)
+        {
+            story.ChooseChoiceIndex(choiceIndex); // Appliquer le choix
+            HideChoices(); // Cache les boutons après sélection
+            ProcessDialogue(); // Continue le dialogue
+        }
     }
 }
