@@ -13,6 +13,7 @@ public class ActionManager : MonoBehaviour
     private Action.ActionType currentActionType; // Type d'action
     private string currentDescription; // Description de l'objet
     private GameObject player; // Référence au personnage (par exemple, la Princess)
+    public DataPlanet3 data;
 
     void Start()
     {
@@ -83,6 +84,7 @@ public class ActionManager : MonoBehaviour
             {
                 case Action.ActionType.Prendre:
                     Debug.Log("Objet " + currentDescription + " récupéré");
+                    data.AddPickUpItem(currentDescription);
                     Destroy(currentGameObject); // Supprime l'objet du jeu
                     break;
 

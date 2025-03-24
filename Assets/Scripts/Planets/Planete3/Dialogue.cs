@@ -4,26 +4,20 @@ using UnityEngine;
 public class Dialogue : Interraction
 {
     public TextAsset inkFile;
-    public string[] dialogues;
-    public int dialogueIndex = 0; 
-
     public bool interractionStarted = false;
+
     public override void Interract()
     {
         if (!interractionStarted)
         {
             interractionStarted = true;
-            FindObjectOfType<DialogueManager>().DisplayDialogue(inkFile);
+            FindObjectOfType<DialogueManager>().DisplayDialogue(inkFile, this.gameObject);
         }
     }
 
-    public String GetDialogue()
+    public void SetDialogue(TextAsset inkFile)
     {
-        return dialogues[dialogueIndex];
-    }
-
-    public bool IsDialogueFinished()
-    {
-        return dialogueIndex == dialogues.Length;
+        this.inkFile = inkFile;
+        interractionStarted = false;
     }
 }
