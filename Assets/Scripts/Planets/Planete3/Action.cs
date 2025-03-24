@@ -2,11 +2,30 @@ using UnityEngine;
 
 public class Action : Interraction
 {
-    
+    [System.Serializable]
+    public enum ActionType
+    {
+        Prendre, // -> objet à prendre
+        Aller, // -> fusée ou planète
+        Animer, // -> lancer une animation
+        None // Valeur par défaut pour éviter des erreurs
+    }
+
+    public ActionType typeOfAction;
+    public string description;
+    public bool interractionStarted = false;
+
     public override void Interract()
     {
-        // Déplace l'objet de 1 en x
-        transform.position += new Vector3(1, 0, 0);
-        Debug.Log($"{gameObject.name} s'est déplacé de 1 en x.");
+        if (!interractionStarted)
+        {
+            interractionStarted = true;
+            FindObjectOfType<ActionManager>().DisplayAction(gameObject, typeOfAction, description);
+        }
+    }
+
+    public void resetInterraction()
+    {
+        interractionStarted = false;
     }
 }
