@@ -49,7 +49,7 @@ GameObject:
   - component: {fileID: 8983498019186454019}
   - component: {fileID: 3368109201855002096}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: PrincessBody
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

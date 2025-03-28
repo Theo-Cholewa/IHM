@@ -27,7 +27,7 @@ public class DialogueManager : MonoBehaviour
         ConfigureButton(choix3, 2);
 
         // Référence à Princess
-        princess = GameObject.Find("Princess");
+        princess = GameObject.Find("PrincessBody");
         if (princess == null)
         {
             Debug.LogError("L'objet 'Princess' n'a pas été trouvé dans la scène !");
@@ -144,23 +144,7 @@ public class DialogueManager : MonoBehaviour
                 ActivateChoiceButton(choix3, 2, story.currentChoices[2].text, 90);
                 break;
             }
-        }    
-                
-        /*
-        if (choiceCount > 0)
-        {
-            ActivateChoiceButton(choix1, 0, choiceCount > 0 ? story.currentChoices[0].text : null, new Vector3(0, 0, 0));
-        }
-
-        if (choiceCount > 1)
-        {
-            ActivateChoiceButton(choix2, 1, story.currentChoices[1].text, new Vector3(-90, 0, 0));
-        }
-
-        if (choiceCount > 2)
-        {
-            ActivateChoiceButton(choix3, 2, story.currentChoices[2].text, new Vector3(90, 0, 0));
-        }*/
+        } 
     }
 
     private void ActivateChoiceButton(GameObject button, int choiceIndex, string choiceText, int xValue)
