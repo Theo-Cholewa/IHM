@@ -31,7 +31,7 @@ public class PlacePlayerOnSphere : MonoBehaviour
             baseRadius = sphereCollider.radius;
         }
         
-        return baseRadius * gameData.planetScale;
+        return baseRadius * sphere.transform.lossyScale.x;// * gameData.planetScale;
     }
     
     private float GetPlayerHeight()

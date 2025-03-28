@@ -128,31 +128,53 @@ public class DialogueManager : MonoBehaviour
     {
         HideChoices();
         int choiceCount = story.currentChoices.Count;
-
+        switch(choiceCount){
+            case 1 : {
+                ActivateChoiceButton(choix1, 0, story.currentChoices[0].text, 0);
+                break;
+            }
+            case 2 : {
+                ActivateChoiceButton(choix1, 0, story.currentChoices[0].text, -90);
+                ActivateChoiceButton(choix2, 1, story.currentChoices[1].text, 90);
+                break;
+            }
+            case 3 : {
+                ActivateChoiceButton(choix1, 0, story.currentChoices[0].text, -90);
+                ActivateChoiceButton(choix2, 1, story.currentChoices[1].text, 0);
+                ActivateChoiceButton(choix3, 2, story.currentChoices[2].text, 90);
+                break;
+            }
+        }    
+                
+        /*
         if (choiceCount > 0)
         {
-            ActivateChoiceButton(choix1, 0, choiceCount > 0 ? story.currentChoices[0].text : null);
+            ActivateChoiceButton(choix1, 0, choiceCount > 0 ? story.currentChoices[0].text : null, new Vector3(0, 0, 0));
         }
 
         if (choiceCount > 1)
         {
-            ActivateChoiceButton(choix2, 1, story.currentChoices[1].text);
+            ActivateChoiceButton(choix2, 1, story.currentChoices[1].text, new Vector3(-90, 0, 0));
         }
 
         if (choiceCount > 2)
         {
-            ActivateChoiceButton(choix3, 2, story.currentChoices[2].text);
-        }
+            ActivateChoiceButton(choix3, 2, story.currentChoices[2].text, new Vector3(90, 0, 0));
+        }*/
     }
 
-    private void ActivateChoiceButton(GameObject button, int choiceIndex, string choiceText)
+    private void ActivateChoiceButton(GameObject button, int choiceIndex, string choiceText, int xValue)
     {
         if (button != null && choiceText != null)
         {
             button.SetActive(true);
             button.GetComponentInChildren<TextMeshProUGUI>().text = choiceText;
+           Vector3 currentPosition = button.transform.localPosition;
+            currentPosition.x = xValue; // Modifie uniquement la composante x
+            button.transform.localPosition = currentPosition; // Applique la nouvelle position
         }
     }
+
 
     private void HideChoices()
     {
