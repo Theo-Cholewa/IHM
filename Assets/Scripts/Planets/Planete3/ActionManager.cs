@@ -31,7 +31,7 @@ public class ActionManager : MonoBehaviour
             boutonAnnuler.transform.GetComponent<Button>().onClick.AddListener(() => OnChoiceSelected(false));
         }
 
-        player = GameObject.Find("Princess");
+        player = GameObject.Find("PrincessBody");
         if (player == null)
         {
             Debug.LogError("L'objet 'Princess' n'a pas été trouvé dans la scène !");
