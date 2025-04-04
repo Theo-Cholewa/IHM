@@ -169,6 +169,11 @@ public class DialogueManager : MonoBehaviour
 
     private void OnChoiceSelected(int choiceIndex)
     {
+        if (story == null)
+        {
+            return;
+        }
+
         if (choiceIndex < story.currentChoices.Count)
         {
             story.ChooseChoiceIndex(choiceIndex);
@@ -176,4 +181,5 @@ public class DialogueManager : MonoBehaviour
             ProcessDialogue();
         }
     }
+
 }

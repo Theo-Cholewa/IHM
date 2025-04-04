@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ActionManager : MonoBehaviour
 {
@@ -14,6 +15,14 @@ public class ActionManager : MonoBehaviour
     private string currentDescription; // Description de l'objet
     private GameObject player; // Référence au personnage (par exemple, la Princess)
     public DataPlanet3 data;
+
+    private Dictionary<string, string> sceneNameMap = new Dictionary<string, string>()
+    {
+        { "l'espace", "Interactive Menu" },
+        { "planète 1", "Planet 1" },
+        { "planète 3", "Planete3" }
+    };
+
 
     void Start()
     {
@@ -60,7 +69,7 @@ public class ActionManager : MonoBehaviour
                 break;
 
             case Action.ActionType.Aller:
-                actionText.text = $"Aller vers : {description} ?";
+                actionText.text = $"Aller vers {description} ?";
                 break;
 
             case Action.ActionType.Animer:
@@ -90,6 +99,24 @@ public class ActionManager : MonoBehaviour
 
                 case Action.ActionType.Aller:
                     Debug.Log("Direction : " + currentDescription);
+                    if (SceneDataTransfer.Instance != null)
+                    {
+                        Debug.Log(SceneDataTransfer.Instance.fromPlanet);
+                    }
+                    else
+                    {
+                        Debug.LogWarning("SceneDataTransfer.Instance est null !");
+                    }
+
+                    if (sceneNameMap.ContainsKey(currentDescription))
+                    {
+                        SceneDataTransfer.Instance.fromPlanet = 3;
+                        SceneManager.LoadScene(sceneNameMap[currentDescription]);
+                    }
+                    else
+                    {
+                        Debug.LogWarning("Aucune scène trouvée pour : " + currentDescription);
+                    }
                     break;
 
                 case Action.ActionType.Animer:

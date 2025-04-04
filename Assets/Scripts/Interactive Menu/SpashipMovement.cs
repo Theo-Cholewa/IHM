@@ -21,6 +21,8 @@ public class SpashipControl : MonoBehaviour
 
     void Start()
     {
+        Debug.Log("Vient de la planète : " + SceneDataTransfer.Instance.fromPlanet);
+
         rg = GetComponent<Rigidbody>();
 
         spaceship = GameObject.FindWithTag("Player").transform;
