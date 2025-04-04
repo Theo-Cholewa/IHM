@@ -27,7 +27,7 @@ public class DialogueManager : MonoBehaviour
         ConfigureButton(choix3, 2);
 
         // Référence à Princess
-        princess = GameObject.Find("Princess");
+        princess = GameObject.Find("PrincessBody");
         if (princess == null)
         {
             Debug.LogError("L'objet 'Princess' n'a pas été trouvé dans la scène !");
@@ -128,31 +128,37 @@ public class DialogueManager : MonoBehaviour
     {
         HideChoices();
         int choiceCount = story.currentChoices.Count;
-
-        if (choiceCount > 0)
-        {
-            ActivateChoiceButton(choix1, 0, choiceCount > 0 ? story.currentChoices[0].text : null);
-        }
-
-        if (choiceCount > 1)
-        {
-            ActivateChoiceButton(choix2, 1, story.currentChoices[1].text);
-        }
-
-        if (choiceCount > 2)
-        {
-            ActivateChoiceButton(choix3, 2, story.currentChoices[2].text);
-        }
+        switch(choiceCount){
+            case 1 : {
+                ActivateChoiceButton(choix1, 0, story.currentChoices[0].text, 0);
+                break;
+            }
+            case 2 : {
+                ActivateChoiceButton(choix1, 0, story.currentChoices[0].text, -90);
+                ActivateChoiceButton(choix2, 1, story.currentChoices[1].text, 90);
+                break;
+            }
+            case 3 : {
+                ActivateChoiceButton(choix1, 0, story.currentChoices[0].text, -90);
+                ActivateChoiceButton(choix2, 1, story.currentChoices[1].text, 0);
+                ActivateChoiceButton(choix3, 2, story.currentChoices[2].text, 90);
+                break;
+            }
+        } 
     }
 
-    private void ActivateChoiceButton(GameObject button, int choiceIndex, string choiceText)
+    private void ActivateChoiceButton(GameObject button, int choiceIndex, string choiceText, int xValue)
     {
         if (button != null && choiceText != null)
         {
             button.SetActive(true);
             button.GetComponentInChildren<TextMeshProUGUI>().text = choiceText;
+           Vector3 currentPosition = button.transform.localPosition;
+            currentPosition.x = xValue; // Modifie uniquement la composante x
+            button.transform.localPosition = currentPosition; // Applique la nouvelle position
         }
     }
+
 
     private void HideChoices()
     {
@@ -163,6 +169,11 @@ public class DialogueManager : MonoBehaviour
 
     private void OnChoiceSelected(int choiceIndex)
     {
+        if (story == null)
+        {
+            return;
+        }
+
         if (choiceIndex < story.currentChoices.Count)
         {
             story.ChooseChoiceIndex(choiceIndex);
@@ -170,4 +181,5 @@ public class DialogueManager : MonoBehaviour
             ProcessDialogue();
         }
     }
+
 }
