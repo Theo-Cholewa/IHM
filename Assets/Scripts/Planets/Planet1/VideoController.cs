@@ -1,55 +1,67 @@
 ﻿using UnityEngine;
 using UnityEngine.Video;
 
-namespace DefaultNamespace
+public class VideoController : MonoBehaviour
 {
+    private VideoPlayer videoPlayer;
+    private GameObject player;
+    private Action action;
+    private ActionManager actionManager;
 
-
-    public class VideoController : MonoBehaviour
+    void Awake()
     {
-        private VideoPlayer videoPlayer;
+        videoPlayer = GetComponent<VideoPlayer>();
 
-        void Awake()
+        if (videoPlayer == null)
         {
-            videoPlayer = GetComponent<VideoPlayer>();
-
-            if (videoPlayer == null)
-            {
-                Debug.LogError("Aucun VideoPlayer trouvé !");
-            }
-            
-            videoPlayer.loopPointReached += ResetVideoController;
-        }
-
-        public void PlayVideo(string videoName)
-        {
-            videoPlayer.enabled = true;
-            string path = "Planet1/" + videoName; 
-            videoPlayer.source = VideoSource.VideoClip;
-            videoPlayer.clip = Resources.Load<VideoClip>(path);
-
-            if (videoPlayer.clip == null)
-            {
-                Debug.LogError("Vidéo non trouvée : " + path);
-                return;
-            }
-
-            videoPlayer.Prepare();
-            videoPlayer.Play();
-        }
-
-        public void StopVideo()
-        {
-            videoPlayer.Stop();
+            Debug.LogError("Aucun VideoPlayer trouvé !");
         }
         
-        private void ResetVideoController(VideoPlayer vp)
-        {
-            vp.Stop();
-            vp.enabled = false;
-            vp.clip = null;  
-            Debug.Log("VidéoController réinitialisé.");
-        }
+        actionManager = FindObjectOfType<ActionManager>();
+        videoPlayer.loopPointReached += ResetVideoController;
     }
 
+    public void PlayVideo(string videoName, GameObject player, Action action)
+    {
+        this.player = player;
+        this.action = action;
+        
+        videoPlayer.enabled = true;
+        string path = "Planet1/" + videoName; 
+        videoPlayer.source = VideoSource.VideoClip;
+        videoPlayer.clip = Resources.Load<VideoClip>(path);
+
+        if (videoPlayer.clip == null)
+        {
+            Debug.LogError("Vidéo non trouvée : " + path);
+            return;
+        }
+
+        videoPlayer.Prepare();
+        videoPlayer.Play();
+    }
+
+    public void StopVideo()
+    {
+        videoPlayer.Stop();
+    }
+    
+    private void ResetVideoController(VideoPlayer vp)
+    {
+        if (player != null)
+        {
+            player.SendMessage("SetCanWalk", true);
+        }
+        if (actionManager != null)
+        {
+            StartCoroutine(actionManager.ResetInterractionAfterDelay(5f));
+        }
+
+        vp.Stop();
+        vp.enabled = false;
+        vp.clip = null;
+        action = null;
+        player = null;
+        Debug.Log("VidéoController réinitialisé.");
+    }
 }
