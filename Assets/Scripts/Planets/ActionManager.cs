@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
@@ -16,6 +17,7 @@ public class ActionManager : MonoBehaviour
     private string currentDescription; // Description de l'objet
     private GameObject player; // Référence au personnage (par exemple, la Princess)
     public DataPlanet3 data;
+    public VideoController videoController;
 
     private Dictionary<string, string> sceneNameMap = new Dictionary<string, string>()
     {
@@ -35,11 +37,17 @@ public class ActionManager : MonoBehaviour
             boutonAction.SetActive(false);
             boutonAction.transform.GetComponent<Button>().onClick.AddListener(() => OnChoiceSelected(true));
         }
-
+        
+        Debug.Log(boutonAnnuler);
         if (boutonAnnuler != null)
         {
+            Debug.Log(boutonAnnuler + "addListener");
             boutonAnnuler.SetActive(false);
-            boutonAnnuler.transform.GetComponent<Button>().onClick.AddListener(() => OnChoiceSelected(false));
+            boutonAnnuler.transform.GetComponent<Button>().onClick.AddListener(() =>
+            {
+                Debug.Log("annuler");
+                OnChoiceSelected(false);
+            });
         }
 
         player = GameObject.Find("PrincessBody");
@@ -86,6 +94,18 @@ public class ActionManager : MonoBehaviour
         boutonAction.SetActive(true);
         boutonAction.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = currentActionType.ToString();
         boutonAnnuler.SetActive(true);
+        var clickEvent = boutonAction.transform.GetComponent<Button>().onClick;
+        int count = clickEvent.GetPersistentEventCount();
+
+        Debug.Log($"Nombre de listeners persistants : {count}");
+
+        for (int i = 0; i < count; i++)
+        {
+            var target = clickEvent.GetPersistentTarget(i);
+            var method = clickEvent.GetPersistentMethodName(i);
+
+            Debug.Log($"Listener {i + 1} : Méthode = {method}, Cible = {target}");
+        }
     }
 
     private void OnChoiceSelected(bool takeAction)
@@ -123,6 +143,15 @@ public class ActionManager : MonoBehaviour
                     break;
 
                 case Action.ActionType.Animer:
+                        
+                    if (videoController != null)
+                    {
+                        videoController.PlayVideo(currentGameObject.name);
+                    }
+                    else
+                    {
+                        Debug.LogWarning("VideoController non trouvé !");
+                    }
                     Debug.Log("Animation : " + currentDescription);
                     break;
 
