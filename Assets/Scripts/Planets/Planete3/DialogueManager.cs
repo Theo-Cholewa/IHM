@@ -150,14 +150,14 @@ public class DialogueManager : MonoBehaviour
                 break;
             }
             case 2 : {
-                ActivateChoiceButton(choix1, 0, story.currentChoices[0].text, -90);
-                ActivateChoiceButton(choix2, 1, story.currentChoices[1].text, 90);
+                ActivateChoiceButton(choix1, 0, story.currentChoices[0].text, -120);
+                ActivateChoiceButton(choix2, 1, story.currentChoices[1].text, 120);
                 break;
             }
             case 3 : {
-                ActivateChoiceButton(choix1, 0, story.currentChoices[0].text, -90);
+                ActivateChoiceButton(choix1, 0, story.currentChoices[0].text, -100);
                 ActivateChoiceButton(choix2, 1, story.currentChoices[1].text, 0);
-                ActivateChoiceButton(choix3, 2, story.currentChoices[2].text, 90);
+                ActivateChoiceButton(choix3, 2, story.currentChoices[2].text, 100);
                 break;
             }
         } 
