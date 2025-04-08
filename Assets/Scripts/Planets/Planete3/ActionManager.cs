@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class ActionManager : MonoBehaviour
 {
     public TextMeshProUGUI actionText; // Texte pour afficher "Prendre l'élément"
+    public Image image; // Zone autour du texte
     public GameObject boutonAction;
     public GameObject boutonAnnuler; 
     private GameObject currentGameObject; // Objet actuellement sélectionné
@@ -27,6 +28,7 @@ public class ActionManager : MonoBehaviour
     void Start()
     {
         actionText.gameObject.SetActive(false);
+        image.gameObject.SetActive(false);
 
         if (boutonAction != null)
         {
@@ -62,6 +64,7 @@ public class ActionManager : MonoBehaviour
 
         // Afficher le texte et les boutons
         actionText.gameObject.SetActive(true);
+        image.gameObject.SetActive(true);
         switch(currentActionType)
         {
             case Action.ActionType.Prendre:
@@ -142,6 +145,7 @@ public class ActionManager : MonoBehaviour
 
         // Cacher les boutons et le texte
         actionText.gameObject.SetActive(false);
+        image.gameObject.SetActive(false);
         boutonAction.SetActive(false);
         boutonAnnuler.SetActive(false);
     }

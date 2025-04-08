@@ -7,6 +7,8 @@ using Ink.Runtime;
 public class DialogueManager : MonoBehaviour
 {
     public TextMeshProUGUI text; // TextMeshPro pour afficher le dialogue
+    public Image image; // Zone autour du texte
+    public TextMeshProUGUI personName; // Texte pour afficher le nom de la personne
     public GameObject choix1; // Bouton choix 1
     public GameObject choix2; // Bouton choix 2
     public GameObject choix3; // Bouton choix 3
@@ -20,6 +22,8 @@ public class DialogueManager : MonoBehaviour
     void Start()
     {
         text.gameObject.SetActive(false);
+        personName.gameObject.SetActive(false);
+        image.gameObject.SetActive(false);
 
         // Configuration des boutons de choix
         ConfigureButton(choix1, 0);
@@ -57,7 +61,17 @@ public class DialogueManager : MonoBehaviour
         }
 
         // Activer le texte et commencer le dialogue
+        image.gameObject.SetActive(true);
         text.gameObject.SetActive(true);
+        
+        try {
+            object nameValue = story.variablesState["name"];
+            personName.text = nameValue.ToString();
+            personName.gameObject.SetActive(true);
+        }
+        catch {
+            personName.gameObject.SetActive(false);
+        }
         ProcessDialogue();
     }
 
@@ -77,6 +91,8 @@ public class DialogueManager : MonoBehaviour
         }
         else if (!story.canContinue)
         {
+            image.gameObject.SetActive(false); // Désactiver l'image
+            personName.gameObject.SetActive(false); // Désactiver le nom
             UpdateNextDialogue();
             HideChoices(); // Cache les boutons si le dialogue est terminé
 
