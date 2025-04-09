@@ -15,6 +15,5 @@ MonoBehaviour:
   marginFromPlayer: {x: 0, y: 15, z: 15}
   elementsToDetect: []
   planetScale: 0
-  pickUpItems:
-  - gemme bleue
+  pickUpItems: []
   stepDialogues: []

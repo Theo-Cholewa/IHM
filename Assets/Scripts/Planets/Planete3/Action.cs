@@ -13,6 +13,8 @@ public class Action : Interraction
 
     public ActionType typeOfAction;
     public string description;
+
+    public string nameGameObjet = "";
     public bool interractionStarted = false;
 
     public override void Interract()
@@ -20,7 +22,7 @@ public class Action : Interraction
         if (!interractionStarted)
         {
             interractionStarted = true;
-            FindObjectOfType<ActionManager>().DisplayAction(gameObject, typeOfAction, description);
+            FindObjectOfType<ActionManager>().DisplayAction(gameObject, typeOfAction, description, nameGameObjet);
         }
     }
 
