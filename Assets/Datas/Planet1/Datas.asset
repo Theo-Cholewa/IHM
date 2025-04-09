@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fde5435fc1680d49a91c8a512890205, type: 3}
   m_Name: Datas
   m_EditorClassIdentifier: 
-  marginFromPlayer: {x: 0, y: 20, z: -20}
+  marginFromPlayer: {x: 0, y: 10, z: -10}
   elementsToDetect: []
   planetScale: 1
