@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78f4e1853586eec40be46e1e1f2d8970, type: 3}
+  m_Script: {fileID: 11500000, guid: 6f62b5d0754d4f418045ffca1699edf4, type: 3}
   m_Name: GameData
   m_EditorClassIdentifier: 
   marginFromPlayer: {x: 0, y: 15, z: 15}

@@ -1119,7 +1119,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44f42b74e52845544ad2fe06cdbd69de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1904339898}
   gameData: {fileID: 11400000, guid: 941cd02a27cc07c4482ce2b826d62168, type: 2}
 --- !u!114 &963194230
 MonoBehaviour:
@@ -1648,7 +1647,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ab4005f0bc80f2f49b17a7b93574094a, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1904339901}
+      addedObject: {fileID: 1904339902}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ab4005f0bc80f2f49b17a7b93574094a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1904339900}
@@ -1907,7 +1906,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 0
---- !u!114 &1904339901
+--- !u!114 &1904339902
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1916,14 +1915,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1904339895}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 130558dd3cae3a3488cc618ee7f4edee, type: 3}
+  m_Script: {fileID: 11500000, guid: 4825ada93376d664bba897a2169f60ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameDataInteractiveMenu: {fileID: 11400000, guid: 941cd02a27cc07c4482ce2b826d62168, type: 2}
-  rg: {fileID: 0}
-  forwardSpeed: 5
-  steerSpeed: 15
-  friction: 0.2
+  speed: 10
+  steerSpeed: 50
+  trail:
+  - {fileID: 247075091}
+  - {fileID: 880170483}
 --- !u!1 &1913411778 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7300338300193299298, guid: 1f23b633899ed264ba3bae5021ab93d8, type: 3}
