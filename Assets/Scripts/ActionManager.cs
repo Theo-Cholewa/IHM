@@ -23,7 +23,9 @@ public class ActionManager : MonoBehaviour
     private Dictionary<string, string> sceneNameMap = new Dictionary<string, string>()
     {
         { "l'espace", "Interactive Menu" },
-        { "planète 1", "Planet 1" },
+        {  "planète 0", "Interactive Menu" },
+        { "planète 1", "Planete1" },
+        {  "planète 2", "Interactive Menu" },
         { "planète 3", "Planete3" }
     };
 
@@ -107,23 +109,44 @@ public class ActionManager : MonoBehaviour
 
                 case Action.ActionType.Aller:
                     Debug.Log("Direction : " + currentDescription);
-                    if (SceneDataTransfer.Instance != null)
-                    {
-                        Debug.Log(SceneDataTransfer.Instance.fromPlanet);
-                    }
-                    else
-                    {
-                        Debug.LogWarning("SceneDataTransfer.Instance est null !");
-                    }
 
+                    
                     if (sceneNameMap.ContainsKey(currentDescription))
                     {
-                        SceneDataTransfer.Instance.fromPlanet = 3;
+                        if (currentDescription.StartsWith("planète"))
+                        {
+                            // Extrait le numéro après "planète"
+                            string numberPart =
+                                currentDescription.Substring("planète "
+                                    .Length); // Retirer "planète " du début de la chaîne
+                            int planetNumber;
+                            if (int.TryParse(numberPart, out planetNumber))
+                            {
+                                // Maintenant tu as le numéro de la planète dans planetNumber
+                                Debug.Log("Planète trouvée: " + planetNumber);
+                            }
+                            else
+                            {
+                                Debug.Log("Numéro de planète invalide.");
+                            }
+
+                            if (SceneDataTransfer.Instance != null)
+                            {
+                                SceneDataTransfer.Instance.FromPlanet = planetNumber;
+                                Debug.Log(SceneDataTransfer.Instance.FromPlanet);
+                            }
+                        }
+
                         SceneManager.LoadScene(sceneNameMap[currentDescription]);
                     }
+                    
                     else
                     {
                         Debug.LogWarning("Aucune scène trouvée pour : " + currentDescription);
+                    }
+                    if (SceneDataTransfer.Instance != null)
+                    {
+                        Debug.Log(SceneDataTransfer.Instance.FromPlanet);
                     }
                     break;
 
