@@ -51,11 +51,11 @@ public class ActionManager : MonoBehaviour
             Debug.LogError("L'objet 'Princess' n'a pas été trouvé dans la scène !");
         }
     }
-    public void DisplayAction(GameObject gameObject, Action.ActionType typeOfAction, string description, string nameGameObject)
+    public void DisplayAction(GameObject gameObject, Action typeOfAction, string description, string nameGameObject)
     {
         // Stocker les informations actuelles
         currentGameObject = gameObject;
-        currentAction = action;
+        currentAction = typeOfAction;
         currentDescription = description;
         currentNameGameObject = nameGameObject;
 

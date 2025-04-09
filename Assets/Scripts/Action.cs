@@ -22,7 +22,7 @@ public class Action : Interraction
         if (!interractionStarted)
         {
             interractionStarted = true;
-            FindObjectOfType<ActionManager>().DisplayAction(gameObject, this, description);
+            FindObjectOfType<ActionManager>().DisplayAction(gameObject, this, description, nameGameObjet);
         }
     }
 
