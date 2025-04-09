@@ -25,8 +25,9 @@ public class ActionManager : MonoBehaviour
         { "l'espace", "Interactive Menu" },
         {  "planète 0", "Interactive Menu" },
         { "planète 1", "Planete1" },
-        {  "planète 2", "Interactive Menu" },
-        { "planète 3", "Planete3" }
+        {  "planète 2", "Planete2" },
+        { "planète 3", "Planete3" },
+        { "race", "Race" }
     };
 
 
