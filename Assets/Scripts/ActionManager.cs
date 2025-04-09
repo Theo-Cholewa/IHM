@@ -14,6 +14,8 @@ public class ActionManager : MonoBehaviour
     private GameObject currentGameObject; // Objet actuellement sélectionné
     private Action currentAction; // Type d'action
     private string currentDescription; // Description de l'objet
+
+    private string currentNameGameObject; // Nom de l'objet
     private GameObject player; // Référence au personnage (par exemple, la Princess)
     public DataPlanet3 data;
     public VideoController videoController;
@@ -49,13 +51,13 @@ public class ActionManager : MonoBehaviour
             Debug.LogError("L'objet 'Princess' n'a pas été trouvé dans la scène !");
         }
     }
-
-    public void DisplayAction(GameObject gameObject, Action action, string description)
+    public void DisplayAction(GameObject gameObject, Action typeOfAction, string description, string nameGameObject)
     {
         // Stocker les informations actuelles
         currentGameObject = gameObject;
-        currentAction = action;
+        currentAction = typeOfAction;
         currentDescription = description;
+        currentNameGameObject = nameGameObject;
 
         // Empêcher le personnage de bouger
         if (player != null)
@@ -98,7 +100,8 @@ public class ActionManager : MonoBehaviour
             {
                 case Action.ActionType.Prendre:
                     Debug.Log("Objet " + currentDescription + " récupéré");
-                    data.AddPickUpItem(currentDescription);
+                    data.AddPickUpItem(currentNameGameObject);
+                    Debug.Log("Objets ramassés : " + string.Join(", ", data.GetPickUpItems()));
                     Destroy(currentGameObject); // Supprime l'objet du jeu
                     break;
 

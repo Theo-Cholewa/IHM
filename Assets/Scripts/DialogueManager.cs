@@ -15,9 +15,14 @@ public class DialogueManager : MonoBehaviour
 
     private GameObject currentGameObject; // Objet contenant le dialogue
     private Story story; // Instance de l'histoire Ink
+
+    private int currentDialogPlanet; // Nom du dialogue actuel
+
     private GameObject princess; // Référence à l'objet Princess
 
     public string planet; // Nom de la planète actuelle -> lien vers les dialogues
+
+    public DataPlanet3 data;
 
     void Start()
     {
@@ -47,17 +52,19 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    public void DisplayDialogue(TextAsset inkFile, GameObject gameObjectParam)
+    public void DisplayDialogue(TextAsset inkFile, GameObject gameObjectParam, int numberPlanet)
     {
         currentGameObject = gameObjectParam;
 
         // Charger l'histoire Ink
         story = new Story(inkFile.text);
+        currentDialogPlanet = numberPlanet; 
 
         // Bloquer les mouvements de Princess pendant le dialogue
         if (princess != null)
         {
             princess.SendMessage("SetCanWalk", false);
+            data.AddStepDialogue(currentGameObject.name, inkFile.name, currentDialogPlanet+""); // Enregistrer le dialogue actuel
         }
 
         // Activer le texte et commencer le dialogue
