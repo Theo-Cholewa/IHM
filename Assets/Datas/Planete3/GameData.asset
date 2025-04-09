@@ -14,6 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   marginFromPlayer: {x: 0, y: 15, z: 15}
   elementsToDetect: []
+  storyEnd: 
   planetScale: 0
-  pickUpItems: []
-  stepDialogues: []
+  pickUpItems:
+  - blueGem
+  - redGem
+  stepDialogues:
+  - character: Sculptor
+    dialogueName: sculptor2
+    numberPlanet: 3

@@ -60,4 +60,16 @@ public class DataPlanet3 : PlanetData
     {
         return stepDialogues;
     }
+
+    public int GetNumberOfStone(){
+        int numberOfStone = 0;
+        foreach (string item in pickUpItems)
+        {
+            if (item.Contains("Gem"))
+            {
+                numberOfStone++;
+            }
+        }
+        return numberOfStone;
+    }
 }

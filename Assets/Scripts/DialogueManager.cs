@@ -22,7 +22,11 @@ public class DialogueManager : MonoBehaviour
 
     public string planet; // Nom de la planète actuelle -> lien vers les dialogues
 
+    private bool isDialogueWithSin = false; // Indique si le dialogue est avec un pêché
+
     public DataPlanet3 data;
+
+    public Data globalData; // Référence à l'objet Data
 
     void Start()
     {
@@ -67,6 +71,14 @@ public class DialogueManager : MonoBehaviour
             data.AddStepDialogue(currentGameObject.name, inkFile.name, currentDialogPlanet+""); // Enregistrer le dialogue actuel
         }
 
+        switch(inkFile.name){
+            case "sculptor2" : {
+                Debug.Log("Dialogue de la sculpture 2 chargé.");
+                story.variablesState["pierres"] = data.GetNumberOfStone(); 
+                break;
+            }
+        }
+
         // Activer le texte et commencer le dialogue
         image.gameObject.SetActive(true);
         text.gameObject.SetActive(true);
@@ -75,6 +87,16 @@ public class DialogueManager : MonoBehaviour
             object nameValue = story.variablesState["name"];
             personName.text = nameValue.ToString();
             personName.gameObject.SetActive(true);
+        }
+        catch {
+            personName.gameObject.SetActive(false);
+        }
+
+        try {
+            object peche = story.variablesState["peche"];
+            if(peche != null){
+                isDialogueWithSin = true;
+            }
         }
         catch {
             personName.gameObject.SetActive(false);
@@ -98,6 +120,15 @@ public class DialogueManager : MonoBehaviour
         }
         else if (!story.canContinue)
         {
+            if(isDialogueWithSin){
+                try {
+                    object nameValue = story.variablesState["peche"];
+                    if(nameValue.ToString() != ""){
+                        globalData.SetStoryEnd(nameValue.ToString()); // Enregistrer le nom du pêché
+                    }
+                }
+                catch{}
+            }
             image.gameObject.SetActive(false); // Désactiver l'image
             personName.gameObject.SetActive(false); // Désactiver le nom
             UpdateNextDialogue();
@@ -162,9 +193,9 @@ public class DialogueManager : MonoBehaviour
                 break;
             }
             case 3 : {
-                ActivateChoiceButton(choix1, 0, story.currentChoices[0].text, -100);
+                ActivateChoiceButton(choix1, 0, story.currentChoices[0].text, -180);
                 ActivateChoiceButton(choix2, 1, story.currentChoices[1].text, 0);
-                ActivateChoiceButton(choix3, 2, story.currentChoices[2].text, 100);
+                ActivateChoiceButton(choix3, 2, story.currentChoices[2].text, 180);
                 break;
             }
         } 
