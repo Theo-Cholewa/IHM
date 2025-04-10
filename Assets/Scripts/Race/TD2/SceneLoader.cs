@@ -7,6 +7,7 @@ public class SceneLoader : MonoBehaviour
     public void PlayGame()
     {
         dataPlanet3.Reset();
+        SceneDataTransfer.Instance.Reset();
         SceneManager.LoadScene("Planete0");
     }
     public void LoadMenu()
