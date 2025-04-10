@@ -19,10 +19,5 @@ MonoBehaviour:
   planet1Finished: 0
   planet2Finished: 0
   planet3Finished: 0
-
-  areaSize: {x: 500, y: 500}
-  planetsPositions:
-  - {x: -150, y: 150}
-  - {x: -450, y: -450}
-  - {x: 350, y: 250}
-  - {x: 10, y: -250}
+  areaSize: {x: 0, y: 0}
+  planetsPositions: []
