@@ -1,6 +1,8 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class LapManager : MonoBehaviour
 {
@@ -74,9 +76,9 @@ public class LapManager : MonoBehaviour
                     }
 
                     if (player == mainPlayerRank) onPlayerFinished.Invoke();
+                    StartCoroutine(changeSceneAfterDelay(10));
                 }
                 else {
-
                     if (car.gameObject.tag == "Player") ui.UpdateLapText("Lap " + player.lapNumber + " / " + totalLaps);
                 }
             }
@@ -86,5 +88,14 @@ public class LapManager : MonoBehaviour
                 player.lastCheckpoint += 1;
             }
         }
+    }
+    
+    
+    public IEnumerator changeSceneAfterDelay(float delay)
+    {
+        Debug.Log("changeSceneAfterDelay");
+        yield return new WaitForSeconds(delay); 
+        SceneManager.LoadScene("Scenes/Planete2");
+        Debug.Log("changeScene");
     }
 }
