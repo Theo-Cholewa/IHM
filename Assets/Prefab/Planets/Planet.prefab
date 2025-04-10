@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7653447250741296274}
-  - component: {fileID: 2789196576990242107}
   - component: {fileID: 2351480296437262496}
   - component: {fileID: 2821856718510734407}
   m_Layer: 0
@@ -34,19 +33,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4771481863201867755}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2789196576990242107
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3088645991019168040}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d1103ecb1d8b474e9f644acc5641616, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameData: {fileID: 11400000, guid: 077f45773f859a74ba1081088cc248c2, type: 2}
 --- !u!135 &2351480296437262496
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -92,7 +78,6 @@ GameObject:
   - component: {fileID: 4810630196782162464}
   - component: {fileID: 6596435424687967535}
   - component: {fileID: 1447731541736580714}
-  - component: {fileID: 4214286748910130328}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Planet
@@ -186,19 +171,6 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4214286748910130328
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4854021303488188170}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d1103ecb1d8b474e9f644acc5641616, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameData: {fileID: 11400000, guid: 077f45773f859a74ba1081088cc248c2, type: 2}
 --- !u!1 &5293888015963496663
 GameObject:
   m_ObjectHideFlags: 0

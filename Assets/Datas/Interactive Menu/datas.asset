@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6228cec2769ebca47af9e15cd4f7b4ce, type: 3}
   m_Name: datas
   m_EditorClassIdentifier: 
-  areaSize: {x: 500, y: 500}
   marginFromPlayer: {x: 0, y: 25, z: 0}
+  elementsToDetect:
+  - Planet
+  areaSize: {x: 500, y: 500}
   planetsPositions:
   - {x: -150, y: 150}
   - {x: -450, y: -450}
   - {x: 350, y: 250}
   - {x: 10, y: -250}
-  elementsToDetect:
-  - Planet
