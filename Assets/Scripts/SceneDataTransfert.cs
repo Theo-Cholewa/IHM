@@ -66,4 +66,14 @@ public class SceneDataTransfer : MonoBehaviour
         set { numberReturnsPlanet0 = value; 
          Debug.Log("NumberReturnsPlanet0 set to: " + value);}
     }
+
+    public void Reset()
+    {
+        fromPlanet = 0;
+        numberReturnsPlanet0 = 3;
+        planet1Finished = false;
+        planet2Finished = false;
+        planet3Finished = false;
+        storyEnd = null;
+    }
 }
