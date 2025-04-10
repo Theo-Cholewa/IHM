@@ -12,7 +12,6 @@ public class LapManager : MonoBehaviour
 
     private List<PlayerRank> playerRanks = new List<PlayerRank>();
     private PlayerRank mainPlayerRank;
-    public UnityEvent onPlayerFinished = new UnityEvent();
     private bool finish;
 
     void Start()
@@ -75,8 +74,7 @@ public class LapManager : MonoBehaviour
                         finish = true;
                     }
 
-                    if (player == mainPlayerRank) onPlayerFinished.Invoke();
-                    StartCoroutine(changeSceneAfterDelay(10));
+                    StartCoroutine(changeSceneAfterDelay(6));
                 }
                 else {
                     if (car.gameObject.tag == "Player") ui.UpdateLapText("Lap " + player.lapNumber + " / " + totalLaps);
@@ -96,5 +94,6 @@ public class LapManager : MonoBehaviour
         Debug.Log("changeSceneAfterDelay");
         yield return new WaitForSeconds(delay); 
         SceneManager.LoadScene("Scenes/Planete2");
+        Debug.Log("bug");
     }
 }

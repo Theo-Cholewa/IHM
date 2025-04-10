@@ -1677,6 +1677,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e030015dc0ac43d5a224fdc1c13f82f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  planet1Finished: 0
+  planet2Finished: 0
+  planet3Finished: 0
+  storyEnd: 
 --- !u!4 &1299486625
 Transform:
   m_ObjectHideFlags: 0
@@ -1709,6 +1713,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e030015dc0ac43d5a224fdc1c13f82f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  planet1Finished: 0
+  planet2Finished: 0
+  planet3Finished: 0
+  storyEnd: 
 --- !u!1001 &1486503540
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1793,7 +1801,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ab4005f0bc80f2f49b17a7b93574094a, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1904339902}
+      addedObject: {fileID: 1904339906}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ab4005f0bc80f2f49b17a7b93574094a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1904339900}
@@ -2067,23 +2075,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 0
---- !u!114 &1904339902
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1904339895}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4825ada93376d664bba897a2169f60ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 30
-  steerSpeed: 50
-  trail:
-  - {fileID: 247075091}
-  - {fileID: 880170483}
 --- !u!114 &1904339905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2097,6 +2088,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameDatasInteractiveMenu: {fileID: 11400000, guid: 941cd02a27cc07c4482ce2b826d62168, type: 2}
+--- !u!114 &1904339906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1904339895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 952a36bc4afc437c96dc34aa0c97fc6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 7
+  steerSpeed: 35
+  gameDataInteractiveMenu: {fileID: 11400000, guid: 941cd02a27cc07c4482ce2b826d62168, type: 2}
+  rg: {fileID: 1904339900}
+  friction: 0.5
 --- !u!1 &1913411778 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7300338300193299298, guid: 1f23b633899ed264ba3bae5021ab93d8, type: 3}
