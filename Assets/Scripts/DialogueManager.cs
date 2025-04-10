@@ -3,6 +3,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using Ink.Runtime;
+using UnityEngine.SceneManagement;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -16,6 +17,10 @@ public class DialogueManager : MonoBehaviour
     private GameObject currentGameObject; // Objet contenant le dialogue
     private Story story; // Instance de l'histoire Ink
 
+    private string currentStoryName = "";
+
+    private bool loaderRace = false; 
+
     private int currentDialogPlanet; // Nom du dialogue actuel
 
     private GameObject princess; // Référence à l'objet Princess
@@ -25,8 +30,6 @@ public class DialogueManager : MonoBehaviour
     private bool isDialogueWithSin = false; // Indique si le dialogue est avec un pêché
 
     public DataPlanet3 data;
-
-    public Data globalData; // Référence à l'objet Data
 
     void Start()
     {
@@ -59,6 +62,7 @@ public class DialogueManager : MonoBehaviour
     public void DisplayDialogue(TextAsset inkFile, GameObject gameObjectParam, int numberPlanet)
     {
         currentGameObject = gameObjectParam;
+        currentStoryName = inkFile.name; // Nom de l'histoire actuelle
 
         // Charger l'histoire Ink
         story = new Story(inkFile.text);
@@ -71,16 +75,10 @@ public class DialogueManager : MonoBehaviour
             data.AddStepDialogue(currentGameObject.name, inkFile.name, currentDialogPlanet+""); // Enregistrer le dialogue actuel
         }
 
-        switch(inkFile.name){
+        switch(currentStoryName){
             case "sculptor2" : {
                 Debug.Log("Dialogue de la sculpture 2 chargé.");
                 story.variablesState["pierres"] = data.GetNumberOfStone(); 
-                break;
-            }
-
-            case "sculptor3" : {
-                data.SetSculptorGood(); // Mettre à jour l'état du sculpteur
-                Debug.Log("Dialogue de la sculpture 3 chargé.");
                 break;
             }
             case "cook2" : {
@@ -121,15 +119,10 @@ public class DialogueManager : MonoBehaviour
                 }
                 break;
             }
-            case "traveller2" : {
-                Debug.Log("Dialogue du voyageur 2 chargé.");
-                data.SetTravellerGood();
-                break;
-            }
             case "mayor2" : {
                 if(data.GetSculptorGood() && data.GetTravellerGood()){
                     story.variablesState["finish"] = 1; 
-                    globalData.SetPlanetFinished(true, 3); // Marquer la planète comme terminée
+                    SceneDataTransfer.Instance.SetPlanetFinished(true, 3);
                     Debug.Log("La planète 3 est terminée.");
                 }
                 break;
@@ -181,19 +174,41 @@ public class DialogueManager : MonoBehaviour
                 try {
                     object nameValue = story.variablesState["peche"];
                     if(nameValue.ToString() != ""){
-                        globalData.SetStoryEnd(nameValue.ToString()); // Enregistrer le nom du pêché
+                        SceneDataTransfer.Instance.SetStoryEnd(nameValue.ToString()); // Enregistrer le nom du pêché
                     }
+
+                    
                 }
                 catch{}
             }
 
             try {
-                object nameValue = story.variablesState["peche"];
-                if(nameValue.ToString() != ""){
-                    globalData.SetStoryEnd(nameValue.ToString()); // Enregistrer le nom du pêché
+                if(currentStoryName == "race1" || currentStoryName == "race2"){
+                    object nameValue = story.variablesState["course"];
+                    if (nameValue.Equals(1))
+                    {
+                        SceneDataTransfer.Instance.SetPlanetFinished(true, 2); // Enregistrer le nom de la course
+                        loaderRace = true; // Indiquer que la course est terminée
+                    }
                 }
+                if(currentStoryName == "sculptor2"){
+                    object nameValue = story.variablesState["nextDialogue"];
+                    if (nameValue.Equals("sculptor3"))
+                    {
+                        data.SetSculptorGood();
+                    }
                 }
+                if(currentStoryName == "traveller1"){
+                    object nameValue = story.variablesState["nextDialogue"];
+                    if (nameValue.Equals("traveller2"))
+                    {
+                        data.SetTravellerGood();
+                    }
+                }
+            }
             catch{}
+
+
             image.gameObject.SetActive(false); // Désactiver l'image
             personName.gameObject.SetActive(false); // Désactiver le nom
             UpdateNextDialogue();
@@ -226,12 +241,15 @@ public class DialogueManager : MonoBehaviour
     private System.Collections.IEnumerator WaitAndLoadDialogue(string newNextDialogue)
     {
         // Attendre 5 secondes
-        yield return new WaitForSeconds(5f);
-        TextAsset newInkFile = Resources.Load<TextAsset>("Planet3/" + newNextDialogue);
+        yield return new WaitForSeconds(4f);
+        TextAsset newInkFile = Resources.Load<TextAsset>("Planet"+currentDialogPlanet+"/" + newNextDialogue);
         if (newInkFile != null)
         {
             Debug.Log($"Dialogue chargé via Resources : {newNextDialogue}");
             Dialogue dialogueComponent = currentGameObject.GetComponent<Dialogue>();
+
+            data.AddStepDialogue(currentGameObject.name, newInkFile.name, currentDialogPlanet+"");
+
             if (dialogueComponent != null)
             {
                 dialogueComponent.SetDialogue(newInkFile);
@@ -240,6 +258,12 @@ public class DialogueManager : MonoBehaviour
         else
         {
             Debug.LogError($"Le dialogue '{newNextDialogue}' est introuvable dans Resources !");
+        }
+
+        if(loaderRace){
+            loaderRace = false; 
+            SceneDataTransfer.Instance.FromPlanet = 2;
+            SceneManager.LoadScene("Scenes/Race");
         }
     }
 

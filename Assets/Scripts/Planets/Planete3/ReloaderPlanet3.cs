@@ -5,7 +5,7 @@ using UnityEngine;
 public class reloaderPlanet3 : MonoBehaviour
 {
     [SerializeField] private DataPlanet3 data; // À assigner dans l'inspecteur
-    [SerializeField] private string currentPlanet = "3"; // Numéro de planète actuelle
+    [SerializeField] private string currentPlanet; // Numéro de planète actuelle
 
     void Start()
     {

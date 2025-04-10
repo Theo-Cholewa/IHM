@@ -96,6 +96,5 @@ public class LapManager : MonoBehaviour
         Debug.Log("changeSceneAfterDelay");
         yield return new WaitForSeconds(delay); 
         SceneManager.LoadScene("Scenes/Planete2");
-        Debug.Log("changeScene");
     }
 }

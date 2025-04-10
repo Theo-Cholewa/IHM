@@ -22,4 +22,7 @@ MonoBehaviour:
   pickUpItems: []
   travellerGood: 0
   sculptorGood: 0
-  stepDialogues: []
+  stepDialogues:
+  - character: Bot1
+    dialogueName: race2
+    numberPlanet: 2
