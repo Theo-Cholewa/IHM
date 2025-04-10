@@ -5,6 +5,8 @@ public class SceneDataTransfer : MonoBehaviour
     public static SceneDataTransfer Instance;
     private int fromPlanet = 0;
 
+    public int numberReturnsPlanet0 = 3;
+
     public bool planet1Finished = false;
     public bool planet2Finished = false;
     public bool planet3Finished = false;
@@ -56,5 +58,12 @@ public class SceneDataTransfer : MonoBehaviour
         get { return fromPlanet; } 
         set { fromPlanet = value; 
          Debug.Log("FromPlanet set to: " + value);}
+    }
+
+    public int NumberReturnsPlanet0
+    {
+        get { return numberReturnsPlanet0; } 
+        set { numberReturnsPlanet0 = value; 
+         Debug.Log("NumberReturnsPlanet0 set to: " + value);}
     }
 }
