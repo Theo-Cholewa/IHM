@@ -6,6 +6,9 @@ public class DataPlanet3 : PlanetData
 {
     public List<string> pickUpItems = new List<string>(); // Éléments ramassés
 
+    public bool travellerGood = false; 
+    public bool sculptorGood = false;
+
     [System.Serializable]
     public class StepDialogueEntry
     {
@@ -91,5 +94,23 @@ public class DataPlanet3 : PlanetData
             }
         }
         return ingredients;
+    }
+
+    public void SetTravellerGood()
+    {
+        travellerGood = true;
+    }
+    public bool GetTravellerGood()
+    {
+        return travellerGood;
+    }
+
+    public void SetSculptorGood()
+    {
+        sculptorGood = true;
+    }
+    public bool GetSculptorGood()
+    {
+        return sculptorGood;
     }
 }

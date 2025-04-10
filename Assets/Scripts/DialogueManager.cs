@@ -77,10 +77,20 @@ public class DialogueManager : MonoBehaviour
                 story.variablesState["pierres"] = data.GetNumberOfStone(); 
                 break;
             }
+
+            case "sculptor3" : {
+                data.SetSculptorGood(); // Mettre à jour l'état du sculpteur
+                Debug.Log("Dialogue de la sculpture 3 chargé.");
+                break;
+            }
             case "cook2" : {
                 Debug.Log("Dialogue du cuisinier 2 chargé.");
                 List<string> ingredients = data.GetIngredients(); // Récupérer les ingrédients ramassés
                 story.variablesState["nb"] = ingredients.Count; // Nombre d'ingrédients ramassés
+                if(ingredients.Count > 0){
+                    data.AddPickUpItem("soupe"); 
+                }
+                
                 switch (ingredients.Count)
                 {
                     case 0:
@@ -101,6 +111,27 @@ public class DialogueManager : MonoBehaviour
                 }
                 //Debug.Log(story.variablesState["nb"]);
                 //Debug.Log(story.variablesState["phrase"]);
+                break;
+            }
+            case "traveller1" : {
+                Debug.Log("Dialogue du voyageur 1 chargé.");
+                if(data.GetPickUpItems().Contains("soupe")){
+                    Debug.Log("La soupe a été ramassée.");
+                    story.variablesState["soupe"] = 1;
+                }
+                break;
+            }
+            case "traveller2" : {
+                Debug.Log("Dialogue du voyageur 2 chargé.");
+                data.SetTravellerGood();
+                break;
+            }
+            case "mayor2" : {
+                if(data.GetSculptorGood() && data.GetTravellerGood()){
+                    story.variablesState["finish"] = 1; 
+                    globalData.SetPlanetFinished(true, 3); // Marquer la planète comme terminée
+                    Debug.Log("La planète 3 est terminée.");
+                }
                 break;
             }
         }
@@ -155,6 +186,14 @@ public class DialogueManager : MonoBehaviour
                 }
                 catch{}
             }
+
+            try {
+                object nameValue = story.variablesState["peche"];
+                if(nameValue.ToString() != ""){
+                    globalData.SetStoryEnd(nameValue.ToString()); // Enregistrer le nom du pêché
+                }
+                }
+            catch{}
             image.gameObject.SetActive(false); // Désactiver l'image
             personName.gameObject.SetActive(false); // Désactiver le nom
             UpdateNextDialogue();
