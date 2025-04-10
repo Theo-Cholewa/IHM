@@ -1,0 +1,1 @@
+{"inkVersion":21,"root":[["^Rebonjour Princesse","\n","ev","str","^Au revoir","/str","/ev",{"*":"0.c-0","flg":20},{"c-0":["^ ","end","\n",{"->":"0.g-0"},{"#f":5}],"g-0":["done",{"#f":5}]}],"done",{"global decl":["ev","str","^sculptor3","/str",{"VAR=":"nextDialogue"},"str","^Sculpteur","/str",{"VAR=":"name"},"/ev","end",null],"#f":1}],"listDefs":{}}
