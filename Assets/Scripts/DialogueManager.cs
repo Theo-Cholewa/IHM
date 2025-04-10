@@ -130,7 +130,7 @@ public class DialogueManager : MonoBehaviour
                 if(SceneDataTransfer.Instance.gameFinished()){
                     story.variablesState["end"] = 1; 
                     if(SceneDataTransfer.Instance.storyEnd == ""){
-                        story.variablesState["nextDialogue"] = "goodEnding"; 
+                        story.variablesState["nextDialogue"] = "bonne_fin"; 
                     }
                     else{
                         story.variablesState["nextDialogue"] = SceneDataTransfer.Instance.storyEnd; 
@@ -199,8 +199,6 @@ public class DialogueManager : MonoBehaviour
                     if(nameValue.ToString() != ""){
                         SceneDataTransfer.Instance.SetStoryEnd(nameValue.ToString()); // Enregistrer le nom du pêché
                     }
-
-                    
                 }
                 catch{}
             }
@@ -232,6 +230,7 @@ public class DialogueManager : MonoBehaviour
                     loaderInteractiveMenu = true; 
                 }   
                 if(story.variablesState["endOfGame"].Equals(true)){
+                    SceneDataTransfer.Instance.SetStoryEnd(currentStoryName);
                     Debug.Log("Fin du jeu !");
                     SceneManager.LoadScene("Scenes/Main Menu"); 
                     return;
