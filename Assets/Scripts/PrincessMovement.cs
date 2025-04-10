@@ -8,10 +8,9 @@ public class princessMovement : MonoBehaviour
     public float speed;
     public float steerSpeed;
     private Vector2 input;
-    public List<TrailRenderer> trail;
 
 
-    private bool canWalk = true;
+    protected bool canWalk = true;
 
     void Update()
     {
@@ -28,11 +27,6 @@ public class princessMovement : MonoBehaviour
             // Translation (avant/arrière)
             Vector3 moveDirection = transform.forward * (input.y * speed * Time.deltaTime);
             transform.Translate(moveDirection, Space.World);
-
-            // Calcul correct de la vélocité (position actuelle - ancienne position)
-            Vector3 velocity = transform.position - oldPos;
-            float forwardVelocity = Vector3.Dot(transform.forward, velocity);
-            trail.ForEach((emitter) => emitter.emitting = forwardVelocity > 0);
         }
     }
 

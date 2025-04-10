@@ -6,6 +6,9 @@ public class DataPlanet3 : PlanetData
 {
     public List<string> pickUpItems = new List<string>(); // Éléments ramassés
 
+    public bool travellerGood = false; 
+    public bool sculptorGood = false;
+
     [System.Serializable]
     public class StepDialogueEntry
     {
@@ -60,4 +63,56 @@ public class DataPlanet3 : PlanetData
     {
         return stepDialogues;
     }
+
+    public int GetNumberOfStone(){
+        int numberOfStone = 0;
+        foreach (string item in pickUpItems)
+        {
+            if (item.Contains("Gem"))
+            {
+                numberOfStone++;
+            }
+        }
+        return numberOfStone;
+    }
+
+    public List<string> GetIngredients(){
+        List<string> ingredients = new List<string>();
+        foreach (string item in pickUpItems)
+        {
+            if(item.Contains("Mushroom") && ingredients.Contains("champignons") == false)
+            {
+                ingredients.Add("champignons");
+            }
+            else if (item.Contains("potato") && ingredients.Contains("pommes de terre") == false)
+            {
+                ingredients.Add("pommes de terre");
+            }
+            else if (item.Contains("carott") && ingredients.Contains("carottes") == false)
+            {
+                ingredients.Add("carottes");
+            }
+        }
+        return ingredients;
+    }
+
+    public void SetTravellerGood()
+    {
+        travellerGood = true;
+    }
+    public bool GetTravellerGood()
+    {
+        return travellerGood;
+    }
+
+    public void SetSculptorGood()
+    {
+        sculptorGood = true;
+    }
+    public bool GetSculptorGood()
+    {
+        return sculptorGood;
+    }
+
+    
 }

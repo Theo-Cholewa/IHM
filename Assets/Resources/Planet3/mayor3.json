@@ -1,0 +1,1 @@
+{"inkVersion":21,"root":[[{"->":"Start"},["done",{"#f":5,"#n":"g-0"}],null],"done",{"Start":[["^Bonjour Princesse","\n","ev","str","^Au revoir","/str","/ev",{"*":".^.c-0","flg":20},{"c-0":["^ ","end","\n",{"#f":5}]}],{"#f":1}],"global decl":["ev","str","^mayor3","/str",{"VAR=":"nextDialogue"},"str","^Maire","/str",{"VAR=":"name"},"/ev","end",null],"#f":1}],"listDefs":{}}

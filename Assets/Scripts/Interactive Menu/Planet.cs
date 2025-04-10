@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 
-public class Planet : Interraction2
+public class Planet : MonoBehaviour
 {
 
     public int planetIndex;
@@ -19,17 +19,4 @@ public class Planet : Interraction2
         transform.position = new Vector3(gameDatasInteractiveMenu.planetsPositions[planetIndex].x, 0, gameDatasInteractiveMenu.planetsPositions[planetIndex].y);
         rg.constraints = RigidbodyConstraints.FreezeAll;
     }
-
-    
-    void Update()
-    {
-        
-    }
-
-    public override void Interract()
-    {
-        SceneManager.LoadScene("Scenes/Planete3");
-        return;
-    }
-
 }

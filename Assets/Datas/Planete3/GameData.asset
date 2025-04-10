@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   marginFromPlayer: {x: 0, y: 15, z: 15}
   elementsToDetect: []
-  planetScale: 0
+  planetNumber: 0
   pickUpItems: []
+  travellerGood: 0
+  sculptorGood: 0
   stepDialogues: []
