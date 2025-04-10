@@ -22,11 +22,11 @@ public class ActionManager : MonoBehaviour
 
     private Dictionary<string, string> sceneNameMap = new Dictionary<string, string>()
     {
-        { "l'espace", "Interactive Menu" },
-        {  "planète 0", "Interactive Menu" },
+        { "planète 0", "Planete0" },
         { "planète 1", "Planete1" },
-        {  "planète 2", "Planete2" },
+        { "planète 2", "Planete2" },
         { "planète 3", "Planete3" },
+        { "l'espace", "Interactive Menu" },
         { "race", "Race" }
     };
 
@@ -138,6 +138,7 @@ public class ActionManager : MonoBehaviour
                             }
                         }
 
+                        Debug.Log("Trying to load scene: " + sceneNameMap[currentDescription]);
                         SceneManager.LoadScene(sceneNameMap[currentDescription]);
                     }
                     

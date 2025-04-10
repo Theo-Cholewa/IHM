@@ -20,6 +20,7 @@ public class DialogueManager : MonoBehaviour
     private string currentStoryName = "";
 
     private bool loaderRace = false; 
+    private bool loaderInteractiveMenu = false; 
 
     private int currentDialogPlanet; // Nom du dialogue actuel
 
@@ -107,8 +108,6 @@ public class DialogueManager : MonoBehaviour
                         story.variablesState["phrase"] = c; // Trois ingrédients ramassés
                         break;
                 }
-                //Debug.Log(story.variablesState["nb"]);
-                //Debug.Log(story.variablesState["phrase"]);
                 break;
             }
             case "traveller1" : {
@@ -124,6 +123,30 @@ public class DialogueManager : MonoBehaviour
                     story.variablesState["finish"] = 1; 
                     SceneDataTransfer.Instance.SetPlanetFinished(true, 3);
                     Debug.Log("La planète 3 est terminée.");
+                }
+                break;
+            }
+            case "king2" : {
+                if(SceneDataTransfer.Instance.gameFinished()){
+                    story.variablesState["end"] = 1; 
+                    if(SceneDataTransfer.Instance.storyEnd == ""){
+                        story.variablesState["nextDialogue"] = "goodEnding"; 
+                    }
+                    else{
+                        story.variablesState["nextDialogue"] = SceneDataTransfer.Instance.storyEnd; 
+                    }
+                }
+                else {
+                    int numberReturns = SceneDataTransfer.Instance.numberReturnsPlanet0;
+                    if(numberReturns == 0){
+                        story.variablesState["end"] = -1;
+                        story.variablesState["nextDialogue"] = "paresse"; 
+                    }
+                    else {
+                        story.variablesState["end"] = 0;
+                        SceneDataTransfer.Instance.numberReturnsPlanet0 = numberReturns - 1; 
+                        loaderInteractiveMenu = true;
+                    }
                 }
                 break;
             }
@@ -205,6 +228,13 @@ public class DialogueManager : MonoBehaviour
                         data.SetTravellerGood();
                     }
                 }
+                if(currentStoryName == "king1"){
+                    loaderInteractiveMenu = true; 
+                }   
+                if(story.variablesState["endOfGame"].Equals(true)){
+                    Debug.Log("Fin du jeu !");
+                    SceneManager.LoadScene("Scenes/Main Menu"); 
+                }
             }
             catch{}
 
@@ -264,6 +294,12 @@ public class DialogueManager : MonoBehaviour
             loaderRace = false; 
             SceneDataTransfer.Instance.FromPlanet = 2;
             SceneManager.LoadScene("Scenes/Race");
+        }
+        if(loaderInteractiveMenu){
+            loaderInteractiveMenu = false; 
+            SceneDataTransfer.Instance.FromPlanet = 0;
+            Debug.Log("Chargement de la scène Interactive Menu");
+            SceneManager.LoadScene("Scenes/Interactive Menu");
         }
     }
 
