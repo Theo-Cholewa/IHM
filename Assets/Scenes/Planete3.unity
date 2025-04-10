@@ -20505,7 +20505,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8634182696009002723, guid: c98980a45eab7a940838d11788866d73, type: 3}
       propertyPath: objectsToDetect.Array.size
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 8634182696009002723, guid: c98980a45eab7a940838d11788866d73, type: 3}
       propertyPath: objectsToDetect.Array.data[0].targetObject
@@ -20548,6 +20548,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1388308090}
     - target: {fileID: 8634182696009002723, guid: c98980a45eab7a940838d11788866d73, type: 3}
+      propertyPath: objectsToDetect.Array.data[10].targetObject
+      value: 
+      objectReference: {fileID: 1520222501}
+    - target: {fileID: 8634182696009002723, guid: c98980a45eab7a940838d11788866d73, type: 3}
       propertyPath: objectsToDetect.Array.data[0].detectionRadius
       value: 4
       objectReference: {fileID: 0}
@@ -20585,6 +20589,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8634182696009002723, guid: c98980a45eab7a940838d11788866d73, type: 3}
       propertyPath: objectsToDetect.Array.data[9].detectionRadius
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8634182696009002723, guid: c98980a45eab7a940838d11788866d73, type: 3}
+      propertyPath: objectsToDetect.Array.data[10].detectionRadius
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8851591330181056518, guid: c98980a45eab7a940838d11788866d73, type: 3}
@@ -28747,9 +28755,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55498ff63bf208947946bc6148feb2cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inkFile: {fileID: 0}
+  inkFile: {fileID: 4900000, guid: 8f10f47602fe5c742bdcec58609b900e, type: 3}
   interractionStarted: 0
-  numberPlanet: 0
+  numberPlanet: 3
 --- !u!4 &1526028950 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3849296038745363819, guid: 102d04a18117b014cb642e98802857c9, type: 3}

@@ -77,6 +77,32 @@ public class DialogueManager : MonoBehaviour
                 story.variablesState["pierres"] = data.GetNumberOfStone(); 
                 break;
             }
+            case "cook2" : {
+                Debug.Log("Dialogue du cuisinier 2 chargé.");
+                List<string> ingredients = data.GetIngredients(); // Récupérer les ingrédients ramassés
+                story.variablesState["nb"] = ingredients.Count; // Nombre d'ingrédients ramassés
+                switch (ingredients.Count)
+                {
+                    case 0:
+                        Debug.Log("Aucun ingrédient ramassé.");
+                        break;
+                    case 1:
+                        string a = "Ah, vous avez rapporté des " + ingredients[0] + ". Je reviens, gardez mon gâteau." ;
+                        story.variablesState["phrase"] = a;  // Un seul ingrédient ramassé
+                        break;
+                    case 2:
+                        string b = "Ah, vous avez rapporté des " + ingredients[0] + " et des " + ingredients[1] + ". Je reviens, gardez mon gâteau." ;
+                        story.variablesState["phrase"] = b; // Deux ingrédients ramassés
+                        break;
+                    case 3:
+                        string c = "Incroyable ! Vous avez trouvé trois ingrédients : des " + ingredients[0] + ", des " + ingredients[1] + " et des " + ingredients[2] + "! Quel festin ! Je reviens, gardez mon gâteau." ;
+                        story.variablesState["phrase"] = c; // Trois ingrédients ramassés
+                        break;
+                }
+                //Debug.Log(story.variablesState["nb"]);
+                //Debug.Log(story.variablesState["phrase"]);
+                break;
+            }
         }
 
         // Activer le texte et commencer le dialogue

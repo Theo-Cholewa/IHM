@@ -72,4 +72,24 @@ public class DataPlanet3 : PlanetData
         }
         return numberOfStone;
     }
+
+    public List<string> GetIngredients(){
+        List<string> ingredients = new List<string>();
+        foreach (string item in pickUpItems)
+        {
+            if(item.Contains("Mushroom") && ingredients.Contains("champignons") == false)
+            {
+                ingredients.Add("champignons");
+            }
+            else if (item.Contains("potato") && ingredients.Contains("pommes de terre") == false)
+            {
+                ingredients.Add("pommes de terre");
+            }
+            else if (item.Contains("carott") && ingredients.Contains("carottes") == false)
+            {
+                ingredients.Add("carottes");
+            }
+        }
+        return ingredients;
+    }
 }
