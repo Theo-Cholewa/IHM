@@ -133,6 +133,9 @@ public class ActionManager : MonoBehaviour
 
                             if (SceneDataTransfer.Instance != null)
                             {
+                                if(planetNumber == 1){ 
+                                    SceneDataTransfer.Instance.SetPlanetFinished(true, 1);
+                                }
                                 SceneDataTransfer.Instance.FromPlanet = planetNumber;
                                 Debug.Log(SceneDataTransfer.Instance.FromPlanet);
                             }

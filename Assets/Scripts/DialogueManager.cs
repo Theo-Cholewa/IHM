@@ -234,6 +234,7 @@ public class DialogueManager : MonoBehaviour
                 if(story.variablesState["endOfGame"].Equals(true)){
                     Debug.Log("Fin du jeu !");
                     SceneManager.LoadScene("Scenes/Main Menu"); 
+                    return;
                 }
             }
             catch{}
