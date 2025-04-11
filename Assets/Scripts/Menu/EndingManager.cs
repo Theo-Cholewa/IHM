@@ -51,6 +51,14 @@ public class EndingManager : MonoBehaviour
         }
     }
 
+    void Update()
+    {
+        // Quitter l'application si la touche Échap est pressée
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            QuitApplication();
+        }
+    }
 
     public void SetEnding(string name, bool value)
     {
@@ -103,4 +111,14 @@ public class EndingManager : MonoBehaviour
         string json = JsonUtility.ToJson(endingsData, true);
         File.WriteAllText(filePath, json);
     }
+
+    public void QuitApplication()
+     {
+         Debug.Log("Application fermée !");
+         #if UNITY_EDITOR
+             UnityEditor.EditorApplication.isPlaying = false;  // Arrête le jeu dans l'éditeur
+         #else
+             Application.Quit();  // Ferme l'application en mode build
+         #endif
+     }
 }
