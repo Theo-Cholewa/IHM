@@ -279,6 +279,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24457fdf8e66c3c49b7599931e0fdcb2, type: 3}
+--- !u!114 &6327327 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8591032381777170875, guid: c98980a45eab7a940838d11788866d73, type: 3}
+  m_PrefabInstance: {fileID: 1081354054}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4825ada93376d664bba897a2169f60ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &9378749 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3849296038745363819, guid: 102d04a18117b014cb642e98802857c9, type: 3}
@@ -5034,6 +5045,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e030015dc0ac43d5a224fdc1c13f82f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  numberReturnsPlanet0: 3
   planet1Finished: 0
   planet2Finished: 0
   planet3Finished: 0
@@ -25195,6 +25207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e030015dc0ac43d5a224fdc1c13f82f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  numberReturnsPlanet0: 3
   planet1Finished: 0
   planet2Finished: 0
   planet3Finished: 0
@@ -28593,7 +28606,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 331eec7d5e2a47608c815fc49459fb3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerControls: {fileID: 0}
+  playerControls: {fileID: 6327327}
   cameraIntroAnimator: {fileID: 1489688119}
   followPlayerCamera: {fileID: 1489688115}
 --- !u!82 &1489688121

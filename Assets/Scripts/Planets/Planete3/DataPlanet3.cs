@@ -114,5 +114,13 @@ public class DataPlanet3 : PlanetData
         return sculptorGood;
     }
 
+    public void Reset()
+    {
+        travellerGood = false;
+        sculptorGood = false;
+        pickUpItems.Clear();
+        stepDialogues.Clear();
+    }
+
     
 }
