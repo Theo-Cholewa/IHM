@@ -2,9 +2,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class SceneLoader : MonoBehaviour
 {
+
+    public DataPlanet3 dataPlanet3;
     public void PlayGame()
     {
-        SceneManager.LoadScene(1);
+        dataPlanet3.Reset();
+        SceneDataTransfer.Instance.Reset();
+        SceneManager.LoadScene("Planete0");
     }
     public void LoadMenu()
     {
