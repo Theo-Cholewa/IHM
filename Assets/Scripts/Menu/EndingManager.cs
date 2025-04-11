@@ -111,7 +111,6 @@ public class EndingManager : MonoBehaviour
         string json = JsonUtility.ToJson(endingsData, true);
         File.WriteAllText(filePath, json);
     }
-
     public void QuitApplication()
      {
          Debug.Log("Application fermée !");
