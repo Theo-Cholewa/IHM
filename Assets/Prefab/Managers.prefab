@@ -525,9 +525,6 @@ PrefabInstance:
       addedObject: {fileID: 8591032381777170875}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7646878f33a128545b0195f8f4d92ec1, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7375180591264220943}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7646878f33a128545b0195f8f4d92ec1, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 4834376122751902647}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7646878f33a128545b0195f8f4d92ec1, type: 3}
       insertIndex: -1
@@ -612,19 +609,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   steerSpeed: 50
---- !u!114 &7375180591264220943
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2425511312953385657}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7dabe50366266764aa9b32f2022bf288, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameData: {fileID: 0}
 --- !u!95 &4834376122751902647
 Animator:
   serializedVersion: 5
