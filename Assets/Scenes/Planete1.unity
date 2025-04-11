@@ -13965,6 +13965,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8411991749611251194, guid: 666ad03b6e7e6614fab3ae9fe6d98796, type: 3}
   m_PrefabInstance: {fileID: 1800224640}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1109404226 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8591032381777170875, guid: c98980a45eab7a940838d11788866d73, type: 3}
+  m_PrefabInstance: {fileID: 895776702}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4825ada93376d664bba897a2169f60ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1111558945
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18796,7 +18807,9 @@ GameObject:
   - component: {fileID: 1489688118}
   - component: {fileID: 1489688117}
   - component: {fileID: 1489688116}
+  - component: {fileID: 1489688120}
   - component: {fileID: 1489688115}
+  - component: {fileID: 1489688119}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -18891,6 +18904,42 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1489688119
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1489688114}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3558d0c106f83c0479484e743141434c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1489688120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1489688114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 331eec7d5e2a47608c815fc49459fb3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerControls: {fileID: 1109404226}
+  cameraIntroAnimator: {fileID: 1489688119}
+  followPlayerCamera: {fileID: 1489688115}
 --- !u!1001 &1491348315
 PrefabInstance:
   m_ObjectHideFlags: 0
