@@ -129,7 +129,7 @@ public class DialogueManager : MonoBehaviour
             case "king2" : {
                 if(SceneDataTransfer.Instance.gameFinished()){
                     story.variablesState["end"] = 1; 
-                    if(SceneDataTransfer.Instance.storyEnd == ""){
+                    if(SceneDataTransfer.Instance.storyEnd == "" || SceneDataTransfer.Instance.storyEnd == null){
                         story.variablesState["nextDialogue"] = "bonne_fin"; 
                     }
                     else{
