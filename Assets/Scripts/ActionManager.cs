@@ -19,6 +19,7 @@ public class ActionManager : MonoBehaviour
     private GameObject player; // Référence au personnage (par exemple, la Princess)
     public DataPlanet3 data;
     public VideoController videoController;
+    private Animator mAnimator;
 
     private Dictionary<string, string> sceneNameMap = new Dictionary<string, string>()
     {
@@ -52,6 +53,11 @@ public class ActionManager : MonoBehaviour
         if (player == null)
         {
             Debug.LogError("L'objet 'Princess' n'a pas été trouvé dans la scène !");
+        }
+        mAnimator = GetComponent<Animator>();
+        if (mAnimator == null)
+        {
+            Debug.LogError("Gestionnaire d'animation introuvable !");
         }
     }
     public void DisplayAction(GameObject gameObject, Action typeOfAction, string description, string nameGameObject)
@@ -102,6 +108,7 @@ public class ActionManager : MonoBehaviour
             switch (currentAction.typeOfAction)
             {
                 case Action.ActionType.Prendre:
+                    mAnimator.SetTrigger("TrPickUp");
                     Debug.Log("Objet " + currentDescription + " récupéré");
                     data.AddPickUpItem(currentNameGameObject);
                     Debug.Log("Objets ramassés : " + string.Join(", ", data.GetPickUpItems()));

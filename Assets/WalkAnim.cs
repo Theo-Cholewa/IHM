@@ -21,11 +21,11 @@ public class WalkAnim : MonoBehaviour
             {
                 mAnimator.SetTrigger("TrWalk");
             }
-            /*
-            if (...)
+
+            if (Input.GetKeyDown(KeyCode.P))
             {
                 mAnimator.SetTrigger("TrPickUp");
-            }
+            }/*
             if (...)
             {
                 mAnimator.SetTrigger("TrWave");
