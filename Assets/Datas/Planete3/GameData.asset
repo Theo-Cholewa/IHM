@@ -15,28 +15,7 @@ MonoBehaviour:
   marginFromPlayer: {x: 0, y: 15, z: 15}
   elementsToDetect: []
   planetNumber: 0
-  pickUpItems:
-  - blueGem
-  - carott2
-  - soupe
-  travellerGood: 1
-  sculptorGood: 1
-  stepDialogues:
-  - character: Chef
-    dialogueName: cook3
-    numberPlanet: 3
-  - character: Sculptor
-    dialogueName: sculptor3
-    numberPlanet: 3
-  - character: Traveller
-    dialogueName: traveller2
-    numberPlanet: 3
-  - character: Mayor
-    dialogueName: mayor3
-    numberPlanet: 3
-  - character: Bot1
-    dialogueName: race2
-    numberPlanet: 2
-  - character: WhiteRobot
-    dialogueName: race1
-    numberPlanet: 2
+  pickUpItems: []
+  travellerGood: 0
+  sculptorGood: 0
+  stepDialogues: []
