@@ -1,10 +1,10 @@
 {
     "paresse": false,
-    "colere": false,
+    "colere": true,
     "luxure": false,
-    "envie": false,
+    "envie": true,
     "avarice": false,
     "orgueil": false,
     "gourmandise": false,
-    "bonne_fin": false
+    "bonne_fin": true
 }

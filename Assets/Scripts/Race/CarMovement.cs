@@ -17,10 +17,8 @@ public class CarMovement: MonoBehaviour
         //rg.transform.position = new Vector3(-0.44f, 0, -3.49f);
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        // If the animation/delay is not finished, skip movement.
-
         float rotation = input.x * steerSpeed * Time.fixedDeltaTime;
         transform.Rotate(0, rotation, 0, Space.World);
 
@@ -33,7 +31,18 @@ public class CarMovement: MonoBehaviour
         );
 
         Vector3 velocity = rg.velocity;
+        
+        float maxSpeed = 20f;
+        if (rg.velocity.magnitude > maxSpeed)
+        {
+            rg.velocity = rg.velocity.normalized * maxSpeed;
+        }
+        
         rg.AddForce(-friction * velocity.x*(1-Mathf.Abs(input.y*0.5f)), 0, -friction * velocity.z*(1-Mathf.Abs(input.y*0.5f)), ForceMode.Acceleration);
+        
+        Vector3 localVel = transform.InverseTransformDirection(rg.velocity);
+        localVel.x *= 0.7f; // Plus proche de 0 = plus de grip
+        rg.velocity = transform.TransformDirection(localVel);
     }
     
 

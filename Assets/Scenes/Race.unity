@@ -577,8 +577,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rg: {fileID: 224259046}
-  forwardSpeed: 20
-  steerSpeed: 125
+  forwardSpeed: 25
+  steerSpeed: 150
   friction: 0.8
   input: {x: 0, y: 0}
 --- !u!114 &224259050
@@ -623,7 +623,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2268,7 +2268,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 6442ee1b2a5b17d449a82c2d8dc922ad, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.35
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -2476,8 +2476,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rg: {fileID: 1758661900}
-  forwardSpeed: 17
-  steerSpeed: 125
+  forwardSpeed: 25
+  steerSpeed: 150
   friction: 0.8
   input: {x: 0, y: 0}
 --- !u!114 &1758661893
@@ -2553,7 +2553,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2827,7 +2827,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2929,8 +2929,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rg: {fileID: 1911679947}
-  forwardSpeed: 17
-  steerSpeed: 125
+  forwardSpeed: 25
+  steerSpeed: 150
   friction: 0.8
   input: {x: 0, y: 0}
 --- !u!114 &1911679952

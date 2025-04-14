@@ -2203,7 +2203,7 @@ MonoBehaviour:
   steerSpeed: 35
   gameDataInteractiveMenu: {fileID: 11400000, guid: 941cd02a27cc07c4482ce2b826d62168, type: 2}
   rg: {fileID: 1904339900}
-  friction: 0.5
+  friction: 0.4
 --- !u!1 &1913411778 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7300338300193299298, guid: 1f23b633899ed264ba3bae5021ab93d8, type: 3}

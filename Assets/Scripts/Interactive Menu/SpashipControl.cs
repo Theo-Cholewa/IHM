@@ -54,7 +54,7 @@ public class SpashipControl : princessMovement
     }
 
 
-    void Update(){
+    void FixedUpdate(){
     if(canWalk)
     {
         if (Mathf.Abs(rg.position.x) > gameDataInteractiveMenu.areaSize.x)
@@ -89,17 +89,15 @@ public class SpashipControl : princessMovement
 
         float rotation = inputX * steerSpeed * Time.fixedDeltaTime;
 
-
         transform.Rotate(0, rotation, 0, Space.World);
 
 
         Vector3 worldEulerAngles = transform.eulerAngles;
 
-
-        rg.AddForce(
-            inputY * speed * Mathf.Sin(worldEulerAngles.y * Mathf.PI / 180),
+        Vector3 force = new Vector3(inputY * speed * Mathf.Sin(worldEulerAngles.y * Mathf.PI / 180),
             0,
-            inputY * speed * Mathf.Cos(worldEulerAngles.y * Mathf.PI / 180),
+            inputY * speed * Mathf.Cos(worldEulerAngles.y * Mathf.PI / 180));
+        rg.AddForce(force,
             ForceMode.Acceleration
         );
 
@@ -112,9 +110,12 @@ public class SpashipControl : princessMovement
 
         trail.ForEach((emitter) => emitter.emitting = forwardVelocity > 0);
 
-
-        rg.AddForce(-friction * velocity.x * (1 - Mathf.Abs(inputY * 0.5f)), 0,
-            -friction * velocity.z * (1 - Mathf.Abs(inputY * 0.5f)), ForceMode.Acceleration); 
+        Vector3 frictionForce = new Vector3(
+            -friction * velocity.x * (1 - Mathf.Abs(inputY * 0.5f)),
+            0,
+            -friction * velocity.z * (1 - Mathf.Abs(inputY * 0.5f))
+        );
+        rg.AddForce(frictionForce, ForceMode.Acceleration); 
     }
     else
     {
