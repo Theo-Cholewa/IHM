@@ -40,6 +40,10 @@ The version of Unity used for this project is 2022.3.34f1
   - Houses / Farm (Planet 3) [source](https://assetstore.unity.com/packages/3d/environments/lowpoly-nature-village-pack-165318)
   - Signs (Planet 1) [source](https://assetstore.unity.com/packages/3d/environments/fantasy/fantasy-lowpoly-pack-demo-301518)
 
+- ### Ink
+  - Ink Integration for unity 1.1.8 (for the dialogs)
+  - there are only the json dialogs
+
 ## Tutorials followed
 - Planet gravity tutorial [source](https://www.youtube.com/watch?v=x_5pxFtDMMI)
 - Tutorials for exporting materials from Blender to Unity:
