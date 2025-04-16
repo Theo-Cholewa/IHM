@@ -50,3 +50,23 @@ The version of Unity used for this project is 2022.3.34f1
   - Article : [source](https://makeyourgame.fun/tutoriel/jeux-videos/unity/utiliser-une-texture-blender-dans-unity)
   - Video : [source](https://www.youtube.com/watch?v=3S0QuJD1UfQ)
 - InkFile tutorial [source](https://youtu.be/-nK-tQ_vc0Y?si=XkRO7YqYDkUkzAKw)
+
+## Work distribution (uneven)
+- ### Théo
+  - Menu
+  - Planet 0 (beginning/end story)
+  - Planet 3
+  - Dialogs
+  - Actions 
+  - Story
+  - Progress saving
+- ### Jilian 
+  - Interactive Menu (space) 
+  - Planet 1
+  - Planet 2
+  - Planet system featuring gravity
+  - Import of previous work  (weeks 1-3 + race)
+  - Animation when landing on a planet
+- ### Adam 
+  - Princess model and animations
+  - Other character models
