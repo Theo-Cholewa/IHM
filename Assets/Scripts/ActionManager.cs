@@ -96,7 +96,7 @@ public class ActionManager : MonoBehaviour
                 break;
         }
         boutonAction.SetActive(true);
-        boutonAction.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = currentAction.typeOfAction.ToString();
+        boutonAction.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = currentAction.typeOfAction.ToString();
         boutonAnnuler.SetActive(true);
     }
 
