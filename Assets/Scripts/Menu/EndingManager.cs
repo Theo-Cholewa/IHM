@@ -1,11 +1,18 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.IO;
+using UnityEngine.UI;
 
 public class EndingManager : MonoBehaviour
 {
     private EndingsData endingsData;
     private string filePath;
+
+    public GameObject progess;
+    public GameObject newGame;
+    public  GameObject quit;
+
+    private bool isViewProgress = false;
 
     void Start()
     {
@@ -49,6 +56,8 @@ public class EndingManager : MonoBehaviour
         {
             SetEnding(SceneDataTransfer.Instance.storyEnd, true);
         }
+
+        progess.SetActive(false); // Désactiver le GameObject progess au démarrage
     }
 
     void Update()
@@ -58,6 +67,13 @@ public class EndingManager : MonoBehaviour
         {
             QuitApplication();
         }
+    }
+
+    public void ViewProgress(){
+        isViewProgress = !isViewProgress;
+        progess.SetActive(isViewProgress);
+        newGame.SetActive(!isViewProgress);
+        quit.SetActive(!isViewProgress);
     }
 
     public void SetEnding(string name, bool value)
