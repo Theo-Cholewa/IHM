@@ -12,6 +12,7 @@ The version of Unity used for this project is 2022.3.34f1
 ## Download Links:
 - [Presentation slides](https://docs.google.com/presentation/d/1xdE-31O4nPkUNoVRPFLlrhInRF5u_cL06KqWYJiBcQA/edit?usp=sharing)
 - [Unity package file](https://drive.google.com/file/d/1QAqzmh2zDOBcw9abmdfeHfJm3qR7i6LD/view?usp=sharing): To use it, import it into a new project with the correct version of Unity, and don't forget to add all the scenes to the Build Settings.
+- [Exe file](https://drive.google.com/file/d/1Car_E-C-81wSShWij98M3g10NZEPRTI7/view?usp=sharing)
 
 ## Additional Plugins and Libraries
 - Newtonsoft Json
